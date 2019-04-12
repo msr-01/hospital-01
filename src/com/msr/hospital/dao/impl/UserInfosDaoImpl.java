@@ -72,7 +72,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	@Override
 	public void deleteUserInfos(String uid) {
 		Connection conn =DBHelper.getConn();
-		String sql = "delete from userinfos u where uid = ?";
+		String sql = "delete from userinfos where uid = ?";
 		PreparedStatement ps = null;
 		int rs = 0;
 		

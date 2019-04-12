@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.msr.hospital.bean.Characte;
 import com.msr.hospital.bean.OperationRecord;
+import com.msr.hospital.bean.OperationType;
 import com.msr.hospital.bean.UserInfos;
 import com.msr.hospital.dao.CharacteDao;
 import com.msr.hospital.dao.OperationRecordDao;
@@ -18,6 +19,7 @@ import com.msr.hospital.dao.UserInfosDao;
 import com.msr.hospital.dao.impl.CharacteDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
 import com.msr.hospital.dao.impl.UserInfosDaoImpl;
+import com.msr.hospital.util.TimeUtil;
 import com.msr.hospital.util.UUIDUtils;
 
 /**
@@ -50,8 +52,10 @@ public class UserInfosServlet extends BaseServlet {
 		UserInfos userInfos = ud.findByUid(uid);
 		req.getSession().setAttribute("userInfos", userInfos);
 		
+		//添加操作记录
+		addRecord("4",req,resp);
 		
-		
+		//跳转页面选择
 		switch (site) {
 		case 0:
 			return "test.jsp";
@@ -60,6 +64,9 @@ public class UserInfosServlet extends BaseServlet {
 		}
 		
 	}
+	
+	
+	
 	
 	/**
 	 * 获取所有UserInfos信息  返回uList集合 存入 req中转发
@@ -71,6 +78,8 @@ public class UserInfosServlet extends BaseServlet {
 		int site = Integer.parseInt(req.getParameter("site"));
 		List<UserInfos> uList = ud.findAll();
 		req.setAttribute("uList", uList);
+		
+		addRecord("4", req, resp);
 		switch (site) {
 		case 0:
 			return "test.jsp";
@@ -91,6 +100,8 @@ public class UserInfosServlet extends BaseServlet {
 		String uid = req.getParameter("uid");
 		ud.deleteUserInfos(uid);
 		
+		
+		addRecord("3", req, resp);
 		switch (site) {
 		case 0:
 			return "UserInfosServlet?method=getUserInfosAll&site=0";
@@ -126,6 +137,8 @@ public class UserInfosServlet extends BaseServlet {
 		UserInfos userinfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
 		ud.addUserInfos(userinfos);
 		
+		
+		addRecord("1", req, resp);
 		switch (site) {
 		case 0:
 			return "UserInfosServlet?method=getUserInfosAll&site=0";
@@ -135,5 +148,18 @@ public class UserInfosServlet extends BaseServlet {
 	}
 	
 	
+	/**
+	 * 增加操作记录
+	 * @param otid 操作类型
+	 * @param uid 用户编号 正在操作的得人
+	 */
+	private void addRecord(String otid,HttpServletRequest req , HttpServletResponse resp) {
+		String orid = UUIDUtils.getId();
+		String ortime = TimeUtil.getNowDateTime();
+		UserInfos userInfos = (UserInfos)req.getSession().getAttribute("userInfos");
+		OperationType operationType = new OperationType(otid, "");
+		OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
+		ord.addOperationRecord(operationRecord);
+	}
 	
 }
