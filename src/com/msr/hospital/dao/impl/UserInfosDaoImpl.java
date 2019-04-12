@@ -220,5 +220,49 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		
 		
 	}
+
+	@Override
+	public UserInfos findByjobnumber(String jobnumber) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from userinfos u , characte c , rolename r  where u.jobnumber = ? and u.cid = c.cid and c.rid = r.rid";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, jobnumber);
+			rs = ps.executeQuery();
+			OperationRecordDao ord = new OperationRecordDaoImpl();
+			if(rs.next()) {
+				String uid = rs.getString("uid");
+				String cid = rs.getString("cid"); //(32)
+				String upassword= rs.getString("upassword");	//varchar(50)
+				String uname = rs.getString("uname");	//varchar(50)
+				String ujobtitle = rs.getString("ujobtitle");	//varchar(50)
+				int  uage = rs.getInt("uage");	//int(11)
+				String usex = rs.getString("usex");	//char(2)
+				String uphonenumber = rs.getString("uphonenumber");	//varchar(50)
+				int ustatus = rs.getInt("ustatus");	 //int(11)
+				String uemail = rs.getString("uemail");	//varchar(100)
+				String udescription = rs.getString("udescription");	//varchar(500)
+				String cdescription = rs.getString("cdescription");
+				String rid = rs.getString("rid");
+				String rname = rs.getString("rname");
+				RoleName roleName = new RoleName(rid, rname);
+				Characte characte = new Characte(cid, roleName, cdescription);
+				List<OperationRecord> oList = ord.findByUid(uid);
+				
+				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
+				return userInfos;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		return null;
+	}
 	
 }

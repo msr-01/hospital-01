@@ -147,6 +147,26 @@ public class UserInfosServlet extends BaseServlet {
 		}
 	}
 	
+	public String login(HttpServletRequest req , HttpServletResponse resp) {
+		String jobnumber = req.getParameter("jobnumber");
+		String upassword = req.getParameter("upassword");
+		
+		UserInfos userInfos = ud.findByjobnumber(jobnumber);
+		
+		if(userInfos==null) {
+			System.out.println("工号不存在");
+			return "/html/login.htm";
+		}else if(userInfos.getUpassword().equals(upassword)){
+			req.getSession().setAttribute("userInfos", userInfos);
+			addRecord("5", req, resp);
+			System.out.println("登录成功");
+			return "/html/index.htm";
+		}
+		System.out.println("密码错误");
+		return "/html/login.htm";
+	}
+	
+	
 	
 	/**
 	 * 增加操作记录

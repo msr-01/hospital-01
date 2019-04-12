@@ -10,4 +10,5 @@ public interface UserInfosDao {
 	UserInfos findByUid(String uid);
 	List<UserInfos> findAll();
 	void modifyUserInfos(UserInfos userInfos);
+	UserInfos findByjobnumber(String jobnumber);
 }
