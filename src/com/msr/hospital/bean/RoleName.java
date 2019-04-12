@@ -1,6 +1,6 @@
 package com.msr.hospital.bean;
 
-public class Rolename {
+public class RoleName {
 	private String rid;//	varchar(32)
 	private String rname;//	varchar(50)
 	public String getRid() {
@@ -15,12 +15,12 @@ public class Rolename {
 	public void setRname(String rname) {
 		this.rname = rname;
 	}
-	public Rolename(String rid, String rname) {
+	public RoleName(String rid, String rname) {
 		super();
 		this.rid = rid;
 		this.rname = rname;
 	}
-	public Rolename() {
+	public RoleName() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

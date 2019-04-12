@@ -1,30 +1,16 @@
 package com.msr.hospital.test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
+import com.msr.hospital.bean.UserInfos;
+import com.msr.hospital.dao.UserInfosDao;
+import com.msr.hospital.dao.impl.UserInfosDaoImpl;
 import com.msr.hospital.util.DBHelper;
 
 public class Test {
 	public static void main(String[] args) {
-		Connection conn = DBHelper.getConn();
-		System.out.println(conn);
-		String sql = "select * from characte";
-		PreparedStatement ps = null;
-		ResultSet rs = null;
+		UserInfosDao ud =  new UserInfosDaoImpl();
+		UserInfos userInfos = new UserInfos("2", "2", "123456", "李晋宇", "教授", 27, "男", "18555556666", 1, "lijinyu123@qq.com", "冥土追魂","0002");
 		
-		try {
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			DBHelper.close(conn, ps, rs);
-		}
-		
+		ud.modifyUserInfos(userInfos);
 	}
 }

@@ -1,6 +1,6 @@
 package com.msr.hospital.bean;
 
-public class Userinfos {
+public class UserInfos {
 	private String uid;//varchar(32)
 	private String cid; //(32)
 	private String upassword;	//varchar(50)
@@ -12,6 +12,7 @@ public class Userinfos {
 	private int ustatus;	 //int(11)
 	private String uemail;	//varchar(100)
 	private String udescription;	//varchar(500)
+	private String jobnumber;
 	public String getUid() {
 		return uid;
 	}
@@ -78,8 +79,14 @@ public class Userinfos {
 	public void setUdescription(String udescription) {
 		this.udescription = udescription;
 	}
-	public Userinfos(String uid, String cid, String upassword, String uname, String ujobtitle, int uage, String usex,
-			String uphonenumber, int ustatus, String uemail, String udescription) {
+	public String getJobnumber() {
+		return jobnumber;
+	}
+	public void setJobnumber(String jobnumber) {
+		this.jobnumber = jobnumber;
+	}
+	public UserInfos(String uid, String cid, String upassword, String uname, String ujobtitle, int uage, String usex,
+			String uphonenumber, int ustatus, String uemail, String udescription, String jobnumber) {
 		super();
 		this.uid = uid;
 		this.cid = cid;
@@ -92,10 +99,12 @@ public class Userinfos {
 		this.ustatus = ustatus;
 		this.uemail = uemail;
 		this.udescription = udescription;
+		this.jobnumber = jobnumber;
 	}
-	public Userinfos() {
+	public UserInfos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }
