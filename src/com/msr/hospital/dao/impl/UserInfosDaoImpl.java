@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.msr.hospital.bean.Characte;
+import com.msr.hospital.bean.OperationRecord;
+import com.msr.hospital.bean.RoleName;
 import com.msr.hospital.bean.UserInfos;
+import com.msr.hospital.dao.OperationRecordDao;
 import com.msr.hospital.dao.UserInfosDao;
 import com.msr.hospital.util.DBHelper;
 
@@ -36,7 +40,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userInfos.getUid());
-			ps.setString(2, userInfos.getCid());
+			ps.setString(2, userInfos.getCharacte().getCid());
 			ps.setString(3, userInfos.getUpassword());
 			ps.setString(4, userInfos.getUname());
 			ps.setString(5, userInfos.getUjobtitle());
@@ -68,7 +72,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	@Override
 	public void deleteUserInfos(String uid) {
 		Connection conn =DBHelper.getConn();
-		String sql = "delete from userinfos where uid = ?";
+		String sql = "delete from userinfos u where uid = ?";
 		PreparedStatement ps = null;
 		int rs = 0;
 		
@@ -97,28 +101,33 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from userinfos where uid = ?";
+		String sql = "select * from userinfos u , characte c , rolename r  where u.uid = ? and u.cid = c.cid and c.rid = r.rid";
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, uid);
 			rs = ps.executeQuery();
-			
+			OperationRecordDao ord = new OperationRecordDaoImpl();
 			if(rs.next()) {
-				String uid1 = rs.getString(1);//varchar(32)
-				String cid = rs.getString(2); //(32)
-				String upassword= rs.getString(3);	//varchar(50)
-				String uname = rs.getString(4);	//varchar(50)
-				String ujobtitle = rs.getString(5);	//varchar(50)
-				int  uage = rs.getInt(6);	//int(11)
-				String usex = rs.getString(7);	//char(2)
-				String uphonenumber = rs.getString(8);	//varchar(50)
-				int ustatus = rs.getInt(9);	 //int(11)
-				String uemail = rs.getString(10);	//varchar(100)
-				String udescription = rs.getString(11);	//varchar(500)
-				String jobnumber = rs.getString(12);
+				String cid = rs.getString("cid"); //(32)
+				String upassword= rs.getString("upassword");	//varchar(50)
+				String uname = rs.getString("uname");	//varchar(50)
+				String ujobtitle = rs.getString("ujobtitle");	//varchar(50)
+				int  uage = rs.getInt("uage");	//int(11)
+				String usex = rs.getString("usex");	//char(2)
+				String uphonenumber = rs.getString("uphonenumber");	//varchar(50)
+				int ustatus = rs.getInt("ustatus");	 //int(11)
+				String uemail = rs.getString("uemail");	//varchar(100)
+				String udescription = rs.getString("udescription");	//varchar(500)
+				String jobnumber = rs.getString("jobnumber");
+				String cdescription = rs.getString("cdescription");
+				String rid = rs.getString("rid");
+				String rname = rs.getString("rname");
+				RoleName roleName = new RoleName(rid, rname);
+				Characte characte = new Characte(cid, roleName, cdescription);
+				List<OperationRecord> oList = ord.findByUid(uid);
 				
-				UserInfos userInfos = new UserInfos(uid1, cid, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber);
+				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
 				return userInfos;
 			}
 			
@@ -128,39 +137,41 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		}finally {
 			DBHelper.close(conn, ps, rs);
 		}
-		
-		
-		
-		
 		return null;
 	}
 
 	@Override
 	public List<UserInfos> findAll() {
-		String sql = "select * from userinfos";
+		String sql = "select * from userinfos u , characte c , rolename r  where u.cid = c.cid and c.rid = r.rid";
 		List<UserInfos> uList = new ArrayList<UserInfos>();
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+		OperationRecordDao ord = new OperationRecordDaoImpl();
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				String uid1 = rs.getString(1);//varchar(32)
-				String cid = rs.getString(2); //(32)
-				String upassword= rs.getString(3);	//varchar(50)
-				String uname = rs.getString(4);	//varchar(50)
-				String ujobtitle = rs.getString(5);	//varchar(50)
-				int  uage = rs.getInt(6);	//int(11)
-				String usex = rs.getString(7);	//char(2)
-				String uphonenumber = rs.getString(8);	//varchar(50)
-				int ustatus = rs.getInt(9);	 //int(11)
-				String uemail = rs.getString(10);	//varchar(100)
-				String udescription = rs.getString(11);	//varchar(500)
-				String jobnumber = rs.getString(12);
+				String uid = rs.getString("uid");
+				String cid = rs.getString("cid"); //(32)
+				String upassword= rs.getString("upassword");	//varchar(50)
+				String uname = rs.getString("uname");	//varchar(50)
+				String ujobtitle = rs.getString("ujobtitle");	//varchar(50)
+				int  uage = rs.getInt("uage");	//int(11)
+				String usex = rs.getString("usex");	//char(2)
+				String uphonenumber = rs.getString("uphonenumber");	//varchar(50)
+				int ustatus = rs.getInt("ustatus");	 //int(11)
+				String uemail = rs.getString("uemail");	//varchar(100)
+				String udescription = rs.getString("udescription");	//varchar(500)
+				String jobnumber = rs.getString("jobnumber");
+				String cdescription = rs.getString("cdescription");
+				String rid = rs.getString("rid");
+				String rname = rs.getString("rname");
+				RoleName roleName = new RoleName(rid, rname);
+				Characte characte = new Characte(cid, roleName, cdescription);
+				List<OperationRecord> oList = ord.findByUid(uid);
 				
-				UserInfos userInfos = new UserInfos(uid1, cid, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber);
+				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
 				uList.add(userInfos);
 			}
 			
@@ -182,7 +193,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(12, userInfos.getUid());
-			ps.setString(1, userInfos.getCid());
+			ps.setString(1, userInfos.getCharacte().getCid());
 			ps.setString(2, userInfos.getUpassword());
 			ps.setString(3, userInfos.getUname());
 			ps.setString(4, userInfos.getUjobtitle());
