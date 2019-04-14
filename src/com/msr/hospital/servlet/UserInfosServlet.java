@@ -147,6 +147,13 @@ public class UserInfosServlet extends BaseServlet {
 		}
 	}
 	
+	
+	/**
+	 * 登陆模块
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
 	public String login(HttpServletRequest req , HttpServletResponse resp) {
 		String jobnumber = req.getParameter("jobnumber");
 		String upassword = req.getParameter("upassword");
@@ -155,18 +162,34 @@ public class UserInfosServlet extends BaseServlet {
 		
 		if(userInfos==null) {
 			System.out.println("工号不存在");
-			return "/html/login.htm";
+			req.setAttribute("err", 1);
+			return "/html/login.jsp";
 		}else if(userInfos.getUpassword().equals(upassword)){
 			req.getSession().setAttribute("userInfos", userInfos);
+			//操作记录类型编号5 为登录
 			addRecord("5", req, resp);
 			System.out.println("登录成功");
-			return "/html/index.htm";
+			return "/html/index.jsp";
 		}
 		System.out.println("密码错误");
-		return "/html/login.htm";
+		req.setAttribute("err", 2);
+		return "/html/login.jsp";
 	}
 	
+	/**
+	 * 退出登录 从session中移除 用户信息 并且返回登录页面
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
 	
+	public String outlogin(HttpServletRequest req , HttpServletResponse resp) {
+		//操作记录编号6为 退出登录
+		addRecord("6", req, resp);
+		req.getSession().removeAttribute("userInfos");
+		System.out.println("退出登录成功");
+		return "/html/login.jsp";
+	}
 	
 	/**
 	 * 增加操作记录
