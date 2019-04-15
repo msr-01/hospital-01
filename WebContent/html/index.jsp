@@ -20,8 +20,6 @@
 		<frame src="${pageContext.request.contextPath}/html/main.jsp" name="mainFrame" scrolling="yes" id="mainFrame"
 			title="mainFrame" />
 	</frameset>
-
-
 </frameset>
 <noframes>
 	<body>

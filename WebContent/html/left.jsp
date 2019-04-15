@@ -31,7 +31,7 @@
 						<li><b class="tip"></b><a href="Guahao/lists.jsp"
 							target="mainFrame" class="a03">挂号服务</a></li>
 						<li><b class="tip"></b><a href="Guahao/patientInfo.jsp"
-							target="mainFrame" class="a03">查看病人信息</a></li>
+							target="mainFrame" class="a03">查看患者信息</a></li>
 						<li><b class="tip"></b><a href="Guahao/message.jsp"
 							target="mainFrame" class="a03">信息查询</a></li>
 					</ul>
@@ -41,8 +41,8 @@
 					<ul class="kid">
 						<li><b class="tip"></b><a href="disease/diseaseInfo.jsp"
 							target="mainFrame" class="a03">病历信息查询</a></li>
-						<li><b class="tip"></b><a href="disease/patientsList.jsp"
-							target="mainFrame" class="a03">病人信息管理</a></li>
+						<li><b class="tip"></b><a href="disease/patientsInfoInsert.jsp"
+							target="mainFrame" class="a03">病历信息录入</a></li>
 					</ul>
 				</div>
 				<div>
@@ -53,24 +53,17 @@
 					</ul>
 				</div>
 				<div>
-					<a class="one">科室管理</a>
+					<a class="one">用户与权限管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a href="operationRoom/keshi.jsp"
-							target="mainFrame" class="a03">查看科室信息</a></li>
-						<li><b class="tip"></b><a
-							href="operationRoom/insertkeshi.jsp" target="mainFrame"
-							class="a03">添加新科室</a></li>
-					</ul>
-				</div>
-				<div>
-					<a class="one">用户管理</a>
-					<ul class="kid">
-						<li><b class="tip"></b><a href="User/users.jsp"
-							target="mainFrame" class="a03">用户操作</a></li>
 						<li><b class="tip"></b><a href="Publish/publishannounce.jsp"
 							target="mainFrame" class="a03">发布公告信息</a></li>
 						<li><b class="tip"></b><a href="Publish/announce.jsp"
 							target="mainFrame" class="a03">公布信息的删除/修改</a></li>
+						<li><b class="tip"></b><a
+							href="operationRoom/insertkeshi.jsp" target="mainFrame"
+							class="a03">添加新科室</a></li>
+						<li><b class="tip"></b><a href="User/users.jsp"
+							target="mainFrame" class="a03">用户管理</a></li>
 						<li><b class="tip"></b> <a
 							href="Popedom/popedomAttribute.jsp" target="mainFrame">角色与权限分配</a>
 						</li>
@@ -85,15 +78,6 @@
 		</div>
 		<!--左边菜单结束-->
 		<!--右边框架开始-->
-
-
-
-
-
-
-
-
-
 	</div>
 </body>
 </html>

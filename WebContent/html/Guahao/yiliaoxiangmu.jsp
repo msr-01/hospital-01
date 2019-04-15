@@ -1,12 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询医疗项目信息</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="../../js/check.js"></script>
-	<script language="javascript" src="../../js/checkAll.js"></script>
-	<script language="javascript" src="../../js/clientSideApp.js"></script>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
+	<script language="javascript" src="${pageContext.request.contextPath}/js/check.js"></script>
+	<script language="javascript" src="${pageContext.request.contextPath}/js/checkAll.js"></script>
+	<script language="javascript" src="${pageContext.request.contextPath}/js/clientSideApp.js"></script>
 	<SCRIPT language=JavaScript type=text/JavaScript>
 		function windowOpen(theURL, winName, features, width, hight,
 				scrollbars, top, left) {
@@ -27,7 +29,7 @@
 			<td height="25" align="center" valign="bottom" class="td06"><table
 					width="98%" border="0" cellspacing="3" cellpadding="0">
 					<tr>
-						<td width="15"><img src="../../images/index_32.gif" width="9"
+						<td width="15"><img src="${pageContext.request.contextPath}/images/index_32.gif" width="9"
 							height="9"></td>
 						<td valign="bottom" class="title">查询医疗项目信息</td>
 					</tr>
@@ -77,11 +79,11 @@
 			<table width="95%" border="0" cellpadding="0" cellspacing="0"
 				class="table02" align="center">
 				<tr>
-					<td height="30" align="right"><img src="../../images/1.gif"
+					<td height="30" align="right"><img src="${pageContext.request.contextPath}/images/1.gif"
 						width="4" height="5" align="absmiddle"> 首页 <img
-							src="../../images/2.gif" width="3" height="5" align="absmiddle">
-								上一页 <img src="../../images/2-2.gif" width="3" height="5"
-								align="absmiddle"> 下一页 <img src="../../images/3.gif"
+							src="${pageContext.request.contextPath}/images/2.gif" width="3" height="5" align="absmiddle">
+								上一页 <img src="${pageContext.request.contextPath}/images/2-2.gif" width="3" height="5"
+								align="absmiddle"> 下一页 <img src="${pageContext.request.contextPath}/images/3.gif"
 									width="4" height="5" align="absmiddle"> 末页 共 1 页 1 条记录</td>
 				</tr>
 			</table>
@@ -94,4 +96,3 @@
 			</table>
 </body>
 </html>
-
