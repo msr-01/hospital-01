@@ -13,4 +13,6 @@ public interface DoctorsDao {
 	List<Doctors> findByBT(String brid,String tyid);
 	//查询全部医生
 	List<Doctors> findAll();
+	//根据医生编号查询医生信息
+	Doctors findByDoid(String doid);
 }

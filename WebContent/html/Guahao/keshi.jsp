@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>医生信息查询</title>
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet" type="text/css">
+<title>查询科室信息</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript"
 	src="${pageContext.request.contextPath}/js/check.js"></script>
 <script language="javascript"
@@ -33,10 +32,9 @@
 			<td height="25" align="center" valign="bottom" class="td06"><table
 					width="98%" border="0" cellspacing="3" cellpadding="0">
 					<tr>
-						<td width="15"><img
-							src="${pageContext.request.contextPath}/images/index_32.gif"
-							width="9" height="9"></td>
-						<td valign="bottom" class="title">查看医生信息</td>
+						<td width="15"><img src="${pageContext.request.contextPath}/images/index_32.gif" width="9"
+							height="9"></td>
+						<td valign="bottom" class="title">查询科室信息</td>
 					</tr>
 				</table></td>
 		</tr>
@@ -45,48 +43,28 @@
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
-			<td class="td_page">医生工号： <input name="PARA_YM_NOW" size="10"
-				type="text" class="input"> 医生姓名：<input name="PARA_YM_NOW2"
-				size="10" type="text" class="input"> <input name="Submit"
-				type="submit" class="buttonface" value=" 查询 "></td>
+			<td class="td_page">
+				科室编号： <input name="PARA_YM_NOW" size="10" type="text" class="input">
+				科室名称：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
+				<input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
 		</tr>
 	</table>
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
 		<tr>
-			<td class="td_top">医生工号</td>
-			<td class="td_top">医生姓名</td>
-			<td class="td_top">医生年龄</td>
-			<td class="td_top">医生性别</td>
-			<td class="td_top">医生科室</td>
-			<td class="td_top">医生职称</td>
-			<td class="td_top">手机号</td>
-
-
+			<td class="td_top">科室编号</td>
+			<td class="td_top">科室名称</td>
+			<td class="td_top">科室地址</td>
+			<td class="td_top">科室简介</td>
 		</tr>
 		<tr>
-			<td class="td07">1001</td>
-			<td class="td07">王五</td>
-			<td class="td07">30</td>
-			<td class="td07">女</td>
+			<td class="td07">1103</td>
 			<td class="td07">妇科</td>
-			<td class="td07">主任</td>
-			<td class="td07">110</td>
+			<td class="td07">天桥医院二楼201号</td>
+			<td class="td07">拥有多年临床经验</td>
 		</tr>
 		<tr>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
@@ -96,6 +74,9 @@
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+		</tr>
+		<tr>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
@@ -126,4 +107,3 @@
 	</table>
 </body>
 </html>
-
