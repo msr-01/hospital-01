@@ -20,6 +20,22 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   window.open(theURL,winName,parameter);
 }
 </SCRIPT>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#chaxun").click(function(){
+		$.getJSON("DrugSevlet",{method:drugfindAll,name:"drid"},function(jsonObj){//json字符串数据
+			//清空数据
+			$("#td").empty();
+			$.each(jsonObj,function(index,person){
+				console.log("index:"+index);
+				//把数据绑定到table的表格中去
+				$("#drug").append("<tr><td>"+person.uid+"</td><td>"+person.uname+"</td><td>"+person.sex+"</td><td>"+person.address+"</td></tr>");
+			});
+	});
+});
+
+</script>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -35,16 +51,19 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
+<form action="" method="get"></form>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="td_page">输入药品编号：
-    <input name="PARA_YM_NOW" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" value="xy0012" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" >
-          药品名称：<input name="PARA_YM_NOW2" size="20" type="text" class="input" id="PARA_YM_NOW2" next="A001014" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)">
-    <input name="chaxun" type="button" class="buttonface" value=" 查询 ">
-</td>
-  </tr>
-</table>
-<br>
+	  <tr>
+	    <td class="td_page" >
+	    	输入药品编号：
+	    	<input name="drid" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" >
+	                        药品名称：
+			<input name="drname" size="20" type="text" class="input" id="PARA_YM_NOW2" next="A001014" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)">
+	    	<input name="chaxun" id="chaxun" type="button" class="buttonface" value=" 查询 ">
+		</td>
+	  </tr>
+</table><br>
+
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
     <td class="td_top">药品编号</td>
@@ -57,6 +76,8 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td nowrap class="td_top">操作</td>
 
   </tr>
+  </table>
+  <tbody id="drug">
   <tr>
     <td class="td07">xy0012</td>
     <td class="td07">感冒灵</td>
@@ -65,51 +86,13 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07">主治感冒、发烧</td>
     <td class="td07">3年</td>
     <td class="td07">1200盒</td>
-    <td class="td07"><a href="medicalInfoList.jsp" target="mainFrame">>>详情</a>&nbsp;&nbsp;
-           </td>
+    <td class="td07">
+    <a href="medicalInfoList.jsp" target="mainFrame">>>详情</a>&nbsp;&nbsp;
+    </td>
+  </tr>
+  </tbody>
+  
 
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-</table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>
     <td height="30" align="right"><img src="${pageContext.request.contextPath}/images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="${pageContext.request.contextPath}/images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="${pageContext.request.contextPath}/images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="${pageContext.request.contextPath}/images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>

@@ -50,7 +50,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_top">挂号日期</td>
     <td class="td_top">挂号科室</td>
     <td nowrap class="td_top">操作</td>
-
   </tr>
   <tr>
     <td class="td07">1103</td>
@@ -62,7 +61,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
         <a href="guahaoModify.jsp"  target="mainFrame">&nbsp;&nbsp;修改</a>
         <a href="tuihao.jsp"  target="mainFrame">&nbsp;&nbsp;退号</a>
     </td>
-
   </tr>
   <tr>
     <td class="td07">&nbsp;</td>
