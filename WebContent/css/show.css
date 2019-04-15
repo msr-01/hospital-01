@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+table {
+	width: 900px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-left: 120px;
+}
+#showcoursetable{
+	width: 1000px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-left: 80px;
+}
+#updtable{/* 右侧修改页面 */
+	margin-top: 25px;
+	margin-right: auto;
+	margin-left: 10px;
+	width: 450px;
+	background-color: #f0f0f0;	
+}
+
+#roletable {
+	width: 1200px;
+	height: 200px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-left: 200px;
+	background-color: #F7F9DF;
+}
+#showurtable {
+	width: 600px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-left: 200px;
+	background-color: #F7F9DF;
+}
+/* #roletable tr th{
+	height: 50px;
+	width: 150px;
+} */
+/* #roletable tr td{
+	height: 60px;
+	width: 150px;
+} */
+table tr td {
+	background-color: #F2F2E6;
+}
+body table tr th {
+	background-color: #E1F3F4;
+}
+.input1 {
+	width: 100px;
+	height: 20px;
+}
+.input2 {
+	width: 30px;
+	height: 20px;
+}
+#form1 {
+	margin-top: 40px;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: 130px;
+	width: 700px;
+	height: 30px;
+	float: none;
+}
+
+table tr,td {
+	text-align: center;
+	line-height: normal;
+}
+a {
+	text-decoration: none;
+}
+.a{
+	text-decoration: none;
+	color: red;
+	cursor : pointer; 
+}
+.font1 {
+	font-weight: bold;
+	color: #F00;
+}
+.page{
+	margin-left: 160px;
+	margin-top: 25px;
+}
+.show{
+	margin-left: 290px;
+	margin-top: 25px;
+}
+.show1{
+	margin-left: 430px;
+	margin-top: 25px;
+}
+.go{
+	font-size: 20px;
+	color: #AE444F;
+	cursor: pointer;
+}
+#f1{
+	margin-left: 130px;
+	margin-top: 30px;
+}
+.f2{
+	margin-left: 83px;
+	margin-top: 30px;
+}
+#updRole{
+	width:500px;
+	height:400px;
+	position: absolute;
+	display:none;
+	background-color: #f0f0f0;
+	overflow: auto;
+	z-index: 1;
+	border: 1px solid #acacac;
+	left:300px;
+	top:100px
+}
+.but {
+	width: 50px;
+	height: 30px;
+}
