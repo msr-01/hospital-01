@@ -20,13 +20,13 @@ import com.msr.hospital.dao.impl.BranchDaoImple;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;
+import com.msr.hospital.dao.impl.RegistrationfeeDaoImpl;
 import com.msr.hospital.dao.impl.TypeoftreatmentDaoImple;
 import com.msr.hospital.dao.impl.UserInfosDaoImpl;
 import com.msr.hospital.util.TimeUtil;
 
 public class Test {
 	public static void main(String[] args) {
-		DoctorsDao dd = new DoctorsDaoImpl();
-		System.out.println(dd.findByBT("1", "2").size());
+		System.out.println(new RegistrationfeeDaoImpl().findByDoid("1").getRfcost());
 	}
 }

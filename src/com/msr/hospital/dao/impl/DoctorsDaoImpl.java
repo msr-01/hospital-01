@@ -150,4 +150,33 @@ public class DoctorsDaoImpl implements DoctorsDao {
 		return dlist;
 	}
 
+	@Override
+	public Doctors findByDoid(String doid) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserInfosDao ud = new UserInfosDaoImpl();
+		String sql = "select * from doctors d , branch b , doctortitle dt , typeoftreatment tt where d.brid=b.brid and d.dtid = dt.dtid and  d.tyid=tt.tyid and d.doid=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, doid);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Typeoftreatment typeoftreatment = new Typeoftreatment(rs.getString("tyid"), rs.getString("tyname"));
+				UserInfos userInfos = ud.findByUid(rs.getString("uid"));
+				Doctortitle doctortitle = new Doctortitle(rs.getString("dtid"), rs.getString("dtname"));
+				Branch branch = new Branch(rs.getString("brid"), rs.getString("brname"), rs.getString("brlocation"));
+				Doctors doctors = new Doctors(rs.getString("doid"), branch, doctortitle, userInfos, typeoftreatment);
+				return doctors;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return null;
+	}
+
 }

@@ -38,4 +38,29 @@ public class BranchDaoImple implements BranchDao {
 		return blist;
 	}
 
+	@Override
+	public Branch findByBrid(String brid) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from branch where brid =?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, brid);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Branch branch = new Branch(rs.getString("brid"), rs.getString("brname"), rs.getString("brlocation"));
+				return branch;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		return null;
+	}
+
 }

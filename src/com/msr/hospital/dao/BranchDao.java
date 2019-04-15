@@ -7,4 +7,7 @@ import com.msr.hospital.bean.Branch;
 public interface BranchDao {
 	//查询所有科室信息
 	List<Branch> findAll();
+	
+	//根据brid查询科室信息
+	Branch findByBrid(String brid);
 }

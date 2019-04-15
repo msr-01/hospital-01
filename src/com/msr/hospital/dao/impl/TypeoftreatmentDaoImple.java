@@ -41,4 +41,32 @@ public class TypeoftreatmentDaoImple implements TypeoftreatmentDao{
 		return tlist;
 	}
 
+	@Override
+	public Typeoftreatment findByTyid(String tyid) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from typeoftreatment where tyid = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, tyid);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Typeoftreatment typeoftreatment = new Typeoftreatment(rs.getString("tyid"), rs.getString("tyname"));
+				return typeoftreatment;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+				
+		return null;
+	}
+
 }
