@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
+</head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 	<center>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">

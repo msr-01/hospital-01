@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
+</head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 	<center>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -25,11 +26,14 @@
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊卡号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td width="40%" class="td_form02">
+						<input name="textfield24" type="text" class="input">
+						<input name="Submit" type="button" class="buttonface" value="查询 ">
+					</td>
 					<td width="90" height="24" class="td_form01">患者姓名</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02">
+						<input name="textfield24" type="text" class="input">
+					</td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">患者性别</td>
