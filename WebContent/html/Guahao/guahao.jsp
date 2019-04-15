@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	$(function(){
 		var d = new Date();
-		$("#time").val( d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate());
+		$("#time").val( d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
 		
 		$("#branch").change(function(){
 			$.post("JSONSevlet",{tyid:$("#type").val(),brid:$("#branch").val(),method:1},function(data){

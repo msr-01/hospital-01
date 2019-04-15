@@ -9,4 +9,6 @@ public interface PatientinformationDao {
 	//根据就诊卡号返回患者信息
 	Patientinformation findByPiid(String piid);
 	
+	
+	
 }

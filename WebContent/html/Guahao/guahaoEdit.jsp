@@ -25,38 +25,34 @@
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊卡号</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.patientinformation.piid }</td>
 					<td width="90" height="24" class="td_form01">患者姓名</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.patientinformation.piname }</td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">患者性别</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.patientinformation.pisex }</td>
 					<td width="90" height="24" class="td_form01">患者年龄</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.patientinformation.piage }</td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊科室</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.branch.brname }</td>
 
 					<td width="90" height="24" class="td_form01">挂号类型</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.typeoftreatment.tyname }</td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊医生</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.doctors.userInfos.uname }</td>
 					<td width="90" height="24" class="td_form01">挂号费用</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.registrationfee.rfcost }</td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊地点</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.branch.brlocation }</td>
 					<td width="90" height="24" class="td_form01">挂号日期</td>
-					<td class="td_form02"></td>
-				</tr>
-				<tr>
-					<td width="90" height="24" class="td_form01">操作人员</td>
-					<td class="td_form02"></td>
+					<td class="td_form02">${registered.retime }</td>
 				</tr>
 			</table>
 			<br>

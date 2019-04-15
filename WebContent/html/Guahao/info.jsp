@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,16 +64,19 @@
 			<td nowrap class="td_top">操作</td>
 
 		</tr>
-		<tr>
-			<td class="td07">1103</td>
-			<td class="td07">朱佳宝</td>
-			<td class="td07">脑残科</td>
-			<td class="td07">2013-9-10</td>
-			<td class="td07"><a href="guahaoEdit.jsp" target="mainFrame">&nbsp;&nbsp;详情</a>
-				<a href="guahaoModify.jsp" target="mainFrame">&nbsp;&nbsp;修改</a> <a
-				href="tuihao.jsp" target="mainFrame">&nbsp;&nbsp;退号</a></td>
-
-		</tr>
+		
+		<c:forEach var="r" items="${rlist }">
+			<tr>
+				<td class="td07">${r.patientinformation.piid }</td>
+				<td class="td07">${r.patientinformation.piname }</td>
+				<td class="td07">${r.typeoftreatment.tyname }</td>
+				<td class="td07">${r.retime }</td>
+				<td class="td07"><a href="${pageContext.request.contextPath}/RegisteredServlet?method=findOneRegistered&site=0&reid=${r.reid}" target="mainFrame">&nbsp;&nbsp;详情</a>
+					<a href="${pageContext.request.contextPath}/RegisteredServlet?site=1&method=TypeBranchInfo&reid=${r.reid}" target="mainFrame">&nbsp;&nbsp;修改</a> <a
+					href="${pageContext.request.contextPath}/RegisteredServlet?method=deleteRegistered&site=0&reid=${r.reid}" target="mainFrame">&nbsp;&nbsp;退号</a>
+				</td>
+			</tr>
+		</c:forEach>
 		<tr>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
