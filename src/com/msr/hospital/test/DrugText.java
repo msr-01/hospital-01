@@ -14,9 +14,9 @@ public class DrugText {
 		List<Drug> drList = new ArrayList<Drug>();
 		DrugDao drugDao = new DrugDaoImpl();
 		Drug drug = new Drug();
-		//System.out.println(drugDao.findAll().size());
-		//System.out.println(drugDao.findByDrid("1"));
-		System.out.println(drugDao.findbyDrname("药品名称"));
+		System.out.println(drugDao.findAll().size());
+		System.out.println(drugDao.findByDrid("1"));
+		System.out.println(drugDao.findbyDrname("药品名称").size());
 	}
 
 }
