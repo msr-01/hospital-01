@@ -1,13 +1,15 @@
 package com.msr.hospital.bean;
 
+import java.util.List;
+
 public class Prescription {
 	private String ppid;
 	private int ppstatus;
 	private String ppordertime;
 	private String pppaymenttime;
-	private Druglist druglist;
+	private List<Druglist> druglist;
 	private double dltotal;
-	private Medicallist medicallist;
+	private List<Medicallist> medicallist;
 	private double mltotal;
 	private double total;
 	public String getPpid() {
@@ -34,10 +36,10 @@ public class Prescription {
 	public void setPppaymenttime(String pppaymenttime) {
 		this.pppaymenttime = pppaymenttime;
 	}
-	public Druglist getDruglist() {
+	public List<Druglist> getDruglist() {
 		return druglist;
 	}
-	public void setDruglist(Druglist druglist) {
+	public void setDruglist(List<Druglist> druglist) {
 		this.druglist = druglist;
 	}
 	public double getDltotal() {
@@ -46,10 +48,10 @@ public class Prescription {
 	public void setDltotal(double dltotal) {
 		this.dltotal = dltotal;
 	}
-	public Medicallist getMedicallist() {
+	public List<Medicallist> getMedicallist() {
 		return medicallist;
 	}
-	public void setMedicallist(Medicallist medicallist) {
+	public void setMedicallist(List<Medicallist> medicallist) {
 		this.medicallist = medicallist;
 	}
 	public double getMltotal() {
@@ -64,8 +66,8 @@ public class Prescription {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public Prescription(String ppid, int ppstatus, String ppordertime, String pppaymenttime, Druglist druglist,
-			double dltotal, Medicallist medicallist, double mltotal, double total) {
+	public Prescription(String ppid, int ppstatus, String ppordertime, String pppaymenttime, List<Druglist> druglist,
+			double dltotal, List<Medicallist> medicallist, double mltotal, double total) {
 		super();
 		this.ppid = ppid;
 		this.ppstatus = ppstatus;
@@ -81,6 +83,7 @@ public class Prescription {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 }

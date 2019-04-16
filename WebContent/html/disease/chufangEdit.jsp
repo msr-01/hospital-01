@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,7 @@
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">处方编号</td>
-					<td class="td_form02">cf0001</td>
+					<td class="td_form02">${prescription.ppid }</td>
 				</tr>
 			</table>
 			<br>
@@ -38,23 +39,19 @@
 					<td class="td_top">药品数量</td>
 					<td class="td_top">药品单价</td>
 				</tr>
-				<tr>
-					<td class="td07">999感冒冲剂</td>
-					<td class="td07">y0001</td>
-					<td class="td07">2盒</td>
-					<td class="td07">28元</td>
-				</tr>
-				<tr>
-					<td class="td07">多邦消炎片</td>
-					<td class="td07">y0002</td>
-					<td class="td07">1盒</td>
-					<td class="td07">9元</td>
-				</tr>
+				<c:forEach var="d" items="${prescription.druglist }">
+					<tr>
+						<td class="td07">${d.drug.drname }</td>
+						<td class="td07">${d.drug.drid }</td>
+						<td class="td07">${d.drnum }盒</td>
+						<td class="td07">${d.drug.drunitprice }元</td>
+					</tr>
+				</c:forEach>
 			</table>
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">药品总价</td>
-					<td class="td_form02">65元</td>
+					<td class="td_form02">${prescription.dltotal }元</td>
 				</tr>
 			</table>
 			<br>
@@ -65,23 +62,26 @@
 					<td class="td_top">医疗项目编号</td>
 					<td class="td_top">医疗项目费用</td>
 				</tr>
-				<tr>
-					<td class="td07">心电图</td>
-					<td class="td07">yl001</td>
-					<td class="td07">200元</td>
-				</tr>
+				<c:forEach var="m" items="${prescription.medicallist }">
+					<tr>
+						<td class="td07">${m.medicalproject.mpname }</td>
+						<td class="td07">${m.medicalproject.mpid }</td>
+						<td class="td07">${m.medicalproject.mpprice }元</td>
+					</tr>
+				</c:forEach>
+				
 			</table>
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">医疗项目总价</td>
-					<td class="td_form02">200元</td>
+					<td class="td_form02">${prescription.mltotal }元</td>
 				</tr>
 			</table>
 			<br>
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">处方总价</td>
-					<td class="td_form02">265元</td>
+					<td class="td_form02">${prescription.total }元</td>
 				</tr>
 			</table>
 			<table width="95%" border="0" align="center" cellpadding="0"

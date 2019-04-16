@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Medicallist {
 	private String mlid;
-	private List<Medicalproject> mList;
+	private Medicalproject medicalproject;
 	private Prescription prescription;
 	private double total;
-	public Medicallist(String mlid, List<Medicalproject> mList, Prescription prescription, double total) {
+	public Medicallist(String mlid, Medicalproject medicalproject, Prescription prescription, double total) {
 		super();
 		this.mlid = mlid;
-		this.mList = mList;
+		this.medicalproject = medicalproject;
 		this.prescription = prescription;
 		this.total = total;
 	}
@@ -24,11 +24,11 @@ public class Medicallist {
 	public void setMlid(String mlid) {
 		this.mlid = mlid;
 	}
-	public List<Medicalproject> getmList() {
-		return mList;
+	public Medicalproject getMedicalproject() {
+		return medicalproject;
 	}
-	public void setmList(List<Medicalproject> mList) {
-		this.mList = mList;
+	public void setMedicalproject(Medicalproject medicalproject) {
+		this.medicalproject = medicalproject;
 	}
 	public Prescription getPrescription() {
 		return prescription;
@@ -42,6 +42,9 @@ public class Medicallist {
 	public void setTotal(double total) {
 		this.total = total;
 	}
+	
+	
+	
 	
 	
 }

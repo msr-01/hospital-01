@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,12 +24,12 @@
 					</table></td>
 			</tr>
 		</table>
-		<form name="form1" method="post" action="">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/MedicalrecordSevlet?method=searchByPiid&site=0">
 			<table width="95%" border="0" align="center" cellpadding="0"
 				cellspacing="0">
 				<tr>
 					<td class="td_page">
-					就诊卡号：<input name="PARA_YM_NOW" size="10" type="text" class="input">
+					就诊卡号：<input name="piid" size="10" type="text" class="input">
 					<input name="Submit" type="submit" class="buttonface" value="查询 "></td>
 				</tr>
 			</table>
@@ -44,20 +45,24 @@
 					<td nowrap class="td_top">处方</td>
 					<td nowrap class="td_top">操作</td>
 				</tr>
-				<tr>
-					<td class="td07">0001</td>
-					<td class="td07">张山</td>
-					<td class="td07">2018-11-01</td>
-					<td class="td07">脑残</td>
-					<td class="td07">心电图</td>
-					<td class="td07">
-						<a href="chufangEdit.jsp" target="mainFrame">详情</a>
-					</td>
-					<td class="td07">
-						<a href="patientModify.jsp" target="mainFrame">修改</a> 
-						<a href="#" target="mainFrame">&nbsp;&nbsp;删除</a>
-					</td>
-				</tr>
+				<c:forEach var="mr" items="${mrlist }">
+					<tr>
+						<td class="td07">${mr.mrid }</td>
+						<td class="td07">${mr.patientinformation.piname }</td>
+						<td class="td07">${mr.diagnosistime }</td>
+						<td class="td07">${mr.diagnosisresult }</td>
+						<td class="td07">${mr.diagnosismethod }</td>
+						<td class="td07">
+							<a href="${pageContext.request.contextPath}/MedicalrecordSevlet?method=getOnePrescription&site=0&ppid=${mr.prescription.ppid }" target="mainFrame">详情</a>
+						</td>
+						<td class="td07">
+							<a href="html/disease/patientModify.jsp" target="mainFrame">修改</a> 
+							<a href="#" target="mainFrame">&nbsp;&nbsp;删除</a>
+						</td>
+					</tr>
+				</c:forEach>
+				
+				
 				<tr>
 					<td class="td07">&nbsp;</td>
 					<td class="td07">&nbsp;</td>

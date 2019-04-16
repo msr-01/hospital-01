@@ -13,6 +13,7 @@ import com.msr.hospital.bean.Typeoftreatment;
 import com.msr.hospital.bean.UserInfos;
 import com.msr.hospital.dao.BranchDao;
 import com.msr.hospital.dao.DoctorsDao;
+import com.msr.hospital.dao.MedicalrecordDao;
 import com.msr.hospital.dao.OperationRecordDao;
 import com.msr.hospital.dao.PatientinformationDao;
 import com.msr.hospital.dao.RegisteredDao;
@@ -20,6 +21,7 @@ import com.msr.hospital.dao.TypeoftreatmentDao;
 import com.msr.hospital.dao.UserInfosDao;
 import com.msr.hospital.dao.impl.BranchDaoImpl;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
+import com.msr.hospital.dao.impl.MedicalrecordDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;
 import com.msr.hospital.dao.impl.RegisteredDaoImpl;
@@ -30,8 +32,8 @@ import com.msr.hospital.util.TimeUtil;
 
 public class Test {
 	public static void main(String[] args) {
-		PatientinformationDao pd = new PatientinformationDaoImpl();
+		MedicalrecordDao md = new MedicalrecordDaoImpl();
 		
-		System.out.println(pd.findAll().size());
+		System.out.println(md.findAll().size());
 	}
 }

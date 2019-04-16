@@ -56,9 +56,9 @@ public class PatientinformationDaoImpl implements PatientinformationDao {
 			ps.setString(1, piid);
 			rs = ps.executeQuery();
 			
-			List<Medicalrecord> mrList = md.findByPiid(piid);
+			
 			if(rs.next()) {
-				return new Patientinformation(piid, rs.getString("piname"),rs.getString("pisex"), rs.getInt("piage"), rs.getString("piphonenumber"), mrList);
+				return new Patientinformation(piid, rs.getString("piname"),rs.getString("pisex"), rs.getInt("piage"), rs.getString("piphonenumber"), null);
 			}else {
 				System.out.println("patientinformation查询失败");
 			}
