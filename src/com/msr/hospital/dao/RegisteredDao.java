@@ -20,5 +20,11 @@ public interface RegisteredDao {
 	
 	//根据挂号编号删除挂号记录
 	void deleteByReid(String reid);
+	
+	//根据就诊卡号查询患者的挂号记录
+	List<Registered> findByPiid(String piid);
+	
+	//根据患者姓名模糊查询患者的挂号记录
+	List<Registered> findbyPiname(String piname);
 
 }

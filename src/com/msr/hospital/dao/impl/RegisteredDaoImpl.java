@@ -182,4 +182,74 @@ public class RegisteredDaoImpl implements RegisteredDao {
 		
 	}
 
+	@Override
+	public List<Registered> findByPiid(String piid) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Registered> rlist = new ArrayList<Registered>();
+		DoctorsDao dd = new DoctorsDaoImpl();
+		PatientinformationDao pd = new PatientinformationDaoImpl();
+		RegistrationfeeDao rd = new RegistrationfeeDaoImpl();
+		String sql = "select * from registered where piid=? order by retime desc";	
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, piid);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String doid = rs.getString("doid");
+				Doctors doctors = dd.findByDoid(doid);
+				Patientinformation patientinformation = pd.findByPiid(piid);
+				Registrationfee registrationfee = rd.findByDoid(doid);
+				Registered registered = new Registered(rs.getString("reid"), doctors.getTypeoftreatment(), patientinformation, doctors.getBranch(), registrationfee, rs.getString("retime"), doctors);
+				rlist.add(registered);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return rlist;
+	}
+
+	@Override
+	public List<Registered> findbyPiname(String piname) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Registered> rlist = new ArrayList<Registered>();
+		DoctorsDao dd = new DoctorsDaoImpl();
+		PatientinformationDao pd = new PatientinformationDaoImpl();
+		RegistrationfeeDao rd = new RegistrationfeeDaoImpl();
+		String sql = "select * from registered r,patientinformation p where r.piid=p.piid and p.piname like ? order by r.retime desc";	
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+piname+"%");
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String piid = rs.getString("piid");
+				String doid = rs.getString("doid");
+				Doctors doctors = dd.findByDoid(doid);
+				Patientinformation patientinformation = pd.findByPiid(piid);
+				Registrationfee registrationfee = rd.findByDoid(doid);
+				Registered registered = new Registered(rs.getString("reid"), doctors.getTypeoftreatment(), patientinformation, doctors.getBranch(), registrationfee, rs.getString("retime"), doctors);
+				rlist.add(registered);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return rlist;
+	
+	}
+
 }

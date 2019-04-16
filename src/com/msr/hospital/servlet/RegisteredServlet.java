@@ -227,6 +227,42 @@ public class RegisteredServlet extends BaseServlet {
 		}
 	}
 	
+	
+	/**
+	 * 根据就诊卡号与患者姓名查询患者挂号记录
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	public String searchRegistered(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		String piid = req.getParameter("piid");
+		String piname = req.getParameter("piname");
+		System.out.println("piid:"+piid);
+		System.out.println("piname:"+piname);
+		
+		
+		if((piid==null || piid.equals("")) && (piname==null || piname.equals(""))) {
+			site = 1;
+		}else if((piname==null || piname.equals(""))) {
+			List<Registered> rlist = rrd.findByPiid(piid);
+			req.setAttribute("rlist", rlist);
+		}else {
+			List<Registered> rlist = rrd.findbyPiname(piname);
+			req.setAttribute("rlist", rlist);
+		}
+		
+		
+		switch (site) {
+		case 0:
+			return "/html/Guahao/info.jsp";
+		case 1:
+			return "RegisteredServlet?method=findAllRegistered&site=0";
+		default:
+			return "index.jsp";
+		}
+	}
+	
 	/**
 	 * 增加操作记录
 	 * @param otid 操作类型

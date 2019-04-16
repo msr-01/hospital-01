@@ -44,15 +44,18 @@
 		</tr>
 	</table>
 	<br>
-	<table width="95%" border="0" align="center" cellpadding="0"
-		cellspacing="0">
+	<form action="${pageContext.request.contextPath}/RegisteredServlet?method=searchRegistered&site=0" method="post">
+		<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
-			<td class="td_page">就诊卡号： <input name="PARA_YM_NOW" size="10"
-				type="text" class="input"> 患者姓名：<input name="PARA_YM_NOW2"
-				size="10" type="text" class="input"> <input name="Submit"
-				type="submit" class="buttonface" value="查询 "></td>
+			<td class="td_page">
+				就诊卡号： <input name="piid" size="10" type="text" class="input"> 
+				患者姓名： <input name="piname" size="10" type="text" class="input"> 
+				<input name="Submit" type="submit" class="buttonface" value="查询 ">
+			</td>
 		</tr>
 	</table>
+	</form>
+	
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">

@@ -32,9 +32,6 @@ public class Test {
 	public static void main(String[] args) {
 		RegisteredDao rd = new RegisteredDaoImpl();
 		
-		Registered registered = rd.findAll().get(0);
-		registered.setRetime("2019-01-01");
-		
-		rd.modifyRegistered(registered);
+		System.out.println(rd.findbyPiname("萌").size());
 	}
 }
