@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>病历信息录入</title>
+<title>病历信息修改</title>
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
 </head>
@@ -19,7 +19,7 @@
 							<td width="15"><img
 								src="${pageContext.request.contextPath}/images/index_32.gif"
 								width="9" height="9"></td>
-							<td valign="bottom" class="title">病历信息录入</td>
+							<td valign="bottom" class="title">病历信息修改</td>
 						</tr>
 					</table></td>
 			</tr>
