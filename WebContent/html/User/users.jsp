@@ -79,7 +79,21 @@
 			<td class="td07">07032132121</td>
 			<td class="td07">23121231@2123</td>
 			<td class="td07">在职</td>
-			<td class="td07"><a href="userModify.jsp">修改</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/UserInfosServlet?method=addUser">删除</a></td>
+			<td class="td07"><a href="userModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+		</tr>
+	</table>
+	<table width="95%" border="0" cellpadding="0" cellspacing="0"
+		class="table02" align="center">
+		<tr>
+			<td height="30" align="right"><img
+				src="${pageContext.request.contextPath}/images/1.gif" width="4"
+				height="5" align="absmiddle"> 首页 <img
+				src="${pageContext.request.contextPath}/images/2.gif" width="3"
+				height="5" align="absmiddle"> 上一页 <img
+				src="${pageContext.request.contextPath}/images/2-2.gif" width="3"
+				height="5" align="absmiddle"> 下一页 <img
+				src="${pageContext.request.contextPath}/images/3.gif" width="4"
+				height="5" align="absmiddle"> 末页 共 1 页 1 条记录</td>
 		</tr>
 	</table>
 </body>

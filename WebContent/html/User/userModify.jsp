@@ -22,35 +22,35 @@
 				</table></td>
 		</tr>
 	</table>
-	<form name="form1" method="post" action="${pageContext.request.contextPath}/UserInfosServlet?method=userModify">
+	<form name="form1" method="post" action="">
 		<table width="95%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="90" height="24" class="td_form01">用户编码</td>
-				<td class="td_form02"><input name="uid " type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">登陆密码</td>
-				<td class="td_form02"><input name="upassword" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">姓名</td>
-				<td class="td_form02"><input name="uname" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">性别</td>
-				<td class="td_form02"><input name="usex" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">年龄</td>
-				<td class="td_form02"><input name="uage" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">工号</td>
-				<td class="td_form02"><input name="jobnumber" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">职称</td>
-				<td class="td_form02"><select name="ujobtitle">
+				<td class="td_form02"><select name="select3">
 						<option>--请选择--</option>
 						<option>院长</option>
 						<option>主任</option>
@@ -58,15 +58,15 @@
 						<option>主治医师</option>
 				</select></td>
 				<td width="90" height="24" class="td_form01">电话</td>
-				<td class="td_form02"><input name="uphonenumber" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">邮箱</td>
-				<td class="td_form02"><input name="uemail" type="text"
+				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">状态</td>
-				<td class="td_form02"><select name="ustatus	">
+				<td class="td_form02"><select name="select3">
 						<option>--请选择--</option>
 						<option>在职</option>
 						<option>休假</option>

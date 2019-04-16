@@ -63,4 +63,81 @@ public class BranchDaoImple implements BranchDao {
 		return null;
 	}
 
+	@Override
+	public void deleteBranch(String brid) {//删除一条科室数据
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "delete from Branch where brid = ?";
+		try {
+			conn = DBHelper.getConn();
+			ps = conn .prepareStatement(sql);
+			ps.setString(1, brid);
+			int num = ps.executeUpdate();
+			if(num!=0) {
+				System.out.println("科室删除成功！！");
+			}else {
+				System.out.println("科室删除失败！！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
+	@Override
+	public void addBranch(Branch branch) {//增加一条科室数据
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "insert into branch values (?,?,?)";
+		try {
+			conn = DBHelper.getConn();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, branch.getBrid());
+			ps.setString(2, branch.getBrname());
+			ps.setString(3, branch.getBrlocation());
+			
+			int num = ps.executeUpdate();
+			 
+			if(num!=0) {
+				System.out.println("科室添加成功！！！");
+			}else {
+				System.out.println("科室添加失败！！！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
+	@Override
+	public void modifyBranch(Branch branch) {//根据传入的科室对象，修改数据库中科室数据
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "update Branch set brname = ?, brlocation = ? where brid = ?";
+		try {
+			conn = DBHelper.getConn();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, branch.getBrname());
+			ps.setString(2, branch.getBrlocation());
+			ps.setString(3, branch.getBrid());
+			
+			int num = ps.executeUpdate();
+			if (num !=0) {
+				System.out.println("科室修改成功！！");
+			}else {
+				System.out.println("科室修改失败！！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
 }

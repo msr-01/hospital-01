@@ -62,66 +62,6 @@
 			<td class="td_top">挂号日期</td>
 			<td nowrap class="td_top">操作</td>
 
-<<<<<<< HEAD
-<input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
-  </tr>
-</table>
-<br>
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
-  <tr>
-    <td class="td_top">就诊卡号</td>
-    <td class="td_top">病人姓名</td>
-    <td class="td_top">挂号日期</td>
-    <td class="td_top">挂号科室</td>
-    <td nowrap class="td_top">操作</td>
-  </tr>
-  <tr>
-    <td class="td07">1103</td>
-    <td class="td07">朱佳宝</td>
-    <td class="td07">2013-9-10</td>
-    <td class="td07">脑残科</td>
-    <td class="td07">
-        <a href="guahaoEdit.jsp" target="mainFrame">&nbsp;&nbsp;详情</a>
-        <a href="guahaoModify.jsp"  target="mainFrame">&nbsp;&nbsp;修改</a>
-        <a href="tuihao.jsp"  target="mainFrame">&nbsp;&nbsp;退号</a>
-    </td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-</table>
-<table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
-  <tr>
-    <td height="30" align="right"><img src="${pageContext.request.contextPath}/images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="${pageContext.request.contextPath}/images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="${pageContext.request.contextPath}/images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="${pageContext.request.contextPath}/images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
-  </tr>
-</table>
-=======
 		</tr>
 		<tr>
 			<td class="td07">1103</td>
@@ -184,6 +124,5 @@
 				class="buttonface" value="返回" onClick="history.back(-1)"></td>
 		</tr>
 	</table>
->>>>>>> branch 'liu' of https://github.com/msr-01/hospital-01.git
 </body>
 </html>

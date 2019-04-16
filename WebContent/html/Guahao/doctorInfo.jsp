@@ -62,8 +62,7 @@
 			<td class="td_top">医生科室</td>
 			<td class="td_top">医生职称</td>
 			<td class="td_top">手机号</td>
-
-
+			<td class="td_top">状态</td>
 		</tr>
 		<tr>
 			<td class="td07">1001</td>
@@ -73,6 +72,7 @@
 			<td class="td07">妇科</td>
 			<td class="td07">主任</td>
 			<td class="td07">110</td>
+			<td class="td07">在诊</td>
 		</tr>
 		<tr>
 			<td class="td07">&nbsp;</td>
@@ -82,17 +82,20 @@
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 		</tr>
 		<tr>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>

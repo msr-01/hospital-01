@@ -51,7 +51,7 @@
 
 			<td class="td_01"><img src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="${pageContext.request.contextPath}/DrugSevlet?method=drugfindAll" target="mainFrame" class="a14">药品信息查询</a></td>
+				href="medicalInfo2.jsp" target="mainFrame" class="a14">药品信息查询</a></td>
 		</tr>
 		<tr>
 
