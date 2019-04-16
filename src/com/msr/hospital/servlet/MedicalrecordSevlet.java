@@ -68,6 +68,12 @@ public class MedicalrecordSevlet extends BaseServlet {
 		ppd = new PrescriptionDaoImpl();
 	}
 	
+	/**
+	 * 根据就诊卡号模糊查询 病例信息
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
 	public String searchByPiid(HttpServletRequest req , HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
 		String piid = req.getParameter("piid");
@@ -78,8 +84,6 @@ public class MedicalrecordSevlet extends BaseServlet {
 			List<Medicalrecord> mrlist = mrd.findByPiid(piid);
 			req.setAttribute("mrlist", mrlist);
 		}
-		
-		
 		
 		
 		//35代表查询病例项目记录
@@ -145,6 +149,29 @@ public class MedicalrecordSevlet extends BaseServlet {
 			return "index.jsp";
 		}
 	}
+	
+	/**
+	 * 跳转地址专用方法
+	 * @param otid
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	public String redirect(HttpServletRequest req , HttpServletResponse resp) {
+		System.out.println("************************");
+		
+		int site = Integer.parseInt(req.getParameter("site"));
+		
+		switch (site) {
+		case 0:
+			return "/html/disease/patientsInfoInsert.jsp";
+		case 1:
+			return "MedicalprojectSevlet?site=0&method=findAllmd";
+		default:
+			return "index.jsp";
+		}
+	}
+	
 	
 	/**
 	 * 增加操作记录

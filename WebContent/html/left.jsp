@@ -41,7 +41,7 @@
 					<ul class="kid">
 						<li><b class="tip"></b><a href="${pageContext.request.contextPath}/MedicalrecordSevlet?method=findAllMrecord&site=0"
 							target="mainFrame" class="a03">病历信息查询</a></li>
-						<li><b class="tip"></b><a href="disease/patientsInfoInsert.jsp"
+						<li><b class="tip"></b><a href="${pageContext.request.contextPath}/MedicalrecordSevlet?method=redirect&site=0"
 							target="mainFrame" class="a03">病历信息录入</a></li>
 					</ul>
 				</div>
