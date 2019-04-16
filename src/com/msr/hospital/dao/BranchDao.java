@@ -10,4 +10,10 @@ public interface BranchDao {
 	
 	//根据brid查询科室信息
 	Branch findByBrid(String brid);
+	
+	//根据科室名称模糊查询科室信息
+	List<Branch> findByBrname(String brname);
+	
+	//根据科室id模糊查询科室信息
+	List<Branch> findByBridM(String brid);
 }

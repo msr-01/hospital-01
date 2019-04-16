@@ -8,12 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.msr.hospital.bean.Doctors;
+import com.msr.hospital.bean.Medicalproject;
 import com.msr.hospital.bean.OperationRecord;
 import com.msr.hospital.bean.OperationType;
 import com.msr.hospital.bean.UserInfos;
 import com.msr.hospital.dao.BranchDao;
 import com.msr.hospital.dao.DoctorsDao;
+import com.msr.hospital.dao.MedicalprojectDao;
 import com.msr.hospital.dao.OperationRecordDao;
 import com.msr.hospital.dao.PatientinformationDao;
 import com.msr.hospital.dao.RegisteredDao;
@@ -21,6 +22,7 @@ import com.msr.hospital.dao.RegistrationfeeDao;
 import com.msr.hospital.dao.TypeoftreatmentDao;
 import com.msr.hospital.dao.impl.BranchDaoImpl;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
+import com.msr.hospital.dao.impl.MedicalprojectDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;
 import com.msr.hospital.dao.impl.RegisteredDaoImpl;
@@ -30,10 +32,11 @@ import com.msr.hospital.util.TimeUtil;
 import com.msr.hospital.util.UUIDUtils;
 
 /**
- * Servlet implementation class DoctorsSevlet
+ * Servlet implementation class MedicalprojectSevlet
  */
-@WebServlet("/DoctorsSevlet")
-public class DoctorsSevlet extends BaseServlet {
+@WebServlet("/MedicalprojectSevlet")
+public class MedicalprojectSevlet extends BaseServlet {
+	
 	private OperationRecordDao ord = null;
 	private PatientinformationDao pd = null;
 	private TypeoftreatmentDao td = null;
@@ -41,6 +44,7 @@ public class DoctorsSevlet extends BaseServlet {
 	private DoctorsDao dd =null;
 	private RegistrationfeeDao rd = null;
 	private RegisteredDao rrd = null;
+	private MedicalprojectDao md = null;
 	/**
 	 * 初始化 私有变量接口
 	 */
@@ -53,71 +57,60 @@ public class DoctorsSevlet extends BaseServlet {
 		dd = new DoctorsDaoImpl();
 		rd = new RegistrationfeeDaoImpl();
 		rrd = new RegisteredDaoImpl();
+		md = new MedicalprojectDaoImpl();
 	}
 	
 	/**
-	 * 根据医生工号与医生姓名模糊查询 医生信息
+	 * 查询所有医疗项目信息
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
-	
-	public String searchDoctors(HttpServletRequest req , HttpServletResponse resp) {
+	public String findAllmd(HttpServletRequest req , HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
-		String jobnumber = req.getParameter("jobnumber");
-		String uname = req.getParameter("uname");
-		System.out.println("jobnumber:"+jobnumber);
-		System.out.println("uname"+uname);
+		List<Medicalproject> mlist = md.findAll();
+		req.setAttribute("mlist", mlist);
 		
-		
-		if((jobnumber==null || jobnumber.equals(""))&&(uname==null || uname.equals(""))) {
-			site = 1 ;
-		}else if(jobnumber==null || jobnumber.equals("")) {
-			List<Doctors> dList = dd.findByName(uname);
-			req.setAttribute("dList", dList);
-		}else if(uname==null || uname.equals("")) {
-			List<Doctors> dList = dd.findByJobnumber(jobnumber);
-			req.setAttribute("dList", dList);
-		}
-		
-		
-		//20代表查询医生信息
-		addRecord("20", req, resp);
+		//30代表查询医疗项目记录
+		addRecord("30", req, resp);
 		switch (site) {
 		case 0:
-			return "/html/Guahao/doctorInfo.jsp";
+			return "/html/Guahao/yiliaoxiangmu.jsp";
 		case 1:
-			return "DoctorsSevlet?method=findAllDoctors&site=0";
-		default:
-			return "index.jsp";
-		}
-	}
-	
-	/**
-	 * 查询所有医生信息 返回医生实体集合
-	 * @param req
-	 * @param resp
-	 * @return
-	 */
-	public String findAllDoctors(HttpServletRequest req , HttpServletResponse resp) {
-		int site = Integer.parseInt(req.getParameter("site"));
-		List<Doctors> dList = dd.findAll();
-		req.setAttribute("dList", dList);
-		
-		
-		//20代表查询医生信息
-		addRecord("20", req, resp);
-		switch (site) {
-		case 0:
-			return "/html/Guahao/doctorInfo.jsp";
-		case 1:
-			return "RegisteredServlet?method=findAllRegistered&site=0";
+			return "BranchServlet?site=0&method=findAllBranch";
 		default:
 			return "index.jsp";
 		}
 	}
 	
 	
+	public String searchmd(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		String mpid = req.getParameter("mpid");
+		String mpname = req.getParameter("mpname");
+		
+		if((mpid==null || mpid.equals(""))&&(mpname==null || mpname.equals(""))) {
+			site = 1;
+		}else if(mpid==null || mpid.equals("")) {
+			List<Medicalproject> mlist = md.findByMpname(mpname);
+			req.setAttribute("mlist", mlist);
+		}else if(mpname==null || mpname.equals("")) {
+			List<Medicalproject> mlist = md.findByMpid(mpid);
+			req.setAttribute("mlist", mlist);
+		}
+		
+		
+		//30代表查询医疗项目记录
+		addRecord("30", req, resp);
+		switch (site) {
+		case 0:
+			return "/html/Guahao/yiliaoxiangmu.jsp";
+		case 1:
+			return "MedicalprojectSevlet?site=0&method=findAllmd";
+		default:
+			return "index.jsp";
+		}
+	}
 	
 	/**
 	 * 增加操作记录

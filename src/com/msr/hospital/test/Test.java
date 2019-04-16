@@ -18,7 +18,7 @@ import com.msr.hospital.dao.PatientinformationDao;
 import com.msr.hospital.dao.RegisteredDao;
 import com.msr.hospital.dao.TypeoftreatmentDao;
 import com.msr.hospital.dao.UserInfosDao;
-import com.msr.hospital.dao.impl.BranchDaoImple;
+import com.msr.hospital.dao.impl.BranchDaoImpl;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;

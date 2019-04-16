@@ -19,7 +19,7 @@ import com.msr.hospital.dao.DoctorsDao;
 import com.msr.hospital.dao.PatientinformationDao;
 import com.msr.hospital.dao.RegistrationfeeDao;
 import com.msr.hospital.dao.TypeoftreatmentDao;
-import com.msr.hospital.dao.impl.BranchDaoImple;
+import com.msr.hospital.dao.impl.BranchDaoImpl;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;
 import com.msr.hospital.dao.impl.RegistrationfeeDaoImpl;
@@ -43,7 +43,7 @@ public class JSONSevlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		DoctorsDao dd = new DoctorsDaoImpl();
-		BranchDao bd = new BranchDaoImple();
+		BranchDao bd = new BranchDaoImpl();
 		RegistrationfeeDao rd = new RegistrationfeeDaoImpl();
 		PatientinformationDao pd = new PatientinformationDaoImpl();
 		

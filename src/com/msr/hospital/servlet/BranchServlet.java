@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.msr.hospital.bean.Doctors;
+import com.msr.hospital.bean.Branch;
 import com.msr.hospital.bean.OperationRecord;
 import com.msr.hospital.bean.OperationType;
 import com.msr.hospital.bean.UserInfos;
@@ -30,10 +30,10 @@ import com.msr.hospital.util.TimeUtil;
 import com.msr.hospital.util.UUIDUtils;
 
 /**
- * Servlet implementation class DoctorsSevlet
+ * Servlet implementation class BranchServlet
  */
-@WebServlet("/DoctorsSevlet")
-public class DoctorsSevlet extends BaseServlet {
+@WebServlet("/BranchServlet")
+public class BranchServlet extends BaseServlet {
 	private OperationRecordDao ord = null;
 	private PatientinformationDao pd = null;
 	private TypeoftreatmentDao td = null;
@@ -56,67 +56,54 @@ public class DoctorsSevlet extends BaseServlet {
 	}
 	
 	/**
-	 * 根据医生工号与医生姓名模糊查询 医生信息
+	 * 查询所有科室信息
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
-	
-	public String searchDoctors(HttpServletRequest req , HttpServletResponse resp) {
+	public String findAllBranch(HttpServletRequest req, HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
-		String jobnumber = req.getParameter("jobnumber");
-		String uname = req.getParameter("uname");
-		System.out.println("jobnumber:"+jobnumber);
-		System.out.println("uname"+uname);
 		
+		List<Branch> blist = bd.findAll();
+		req.setAttribute("blist", blist);
 		
-		if((jobnumber==null || jobnumber.equals(""))&&(uname==null || uname.equals(""))) {
-			site = 1 ;
-		}else if(jobnumber==null || jobnumber.equals("")) {
-			List<Doctors> dList = dd.findByName(uname);
-			req.setAttribute("dList", dList);
-		}else if(uname==null || uname.equals("")) {
-			List<Doctors> dList = dd.findByJobnumber(jobnumber);
-			req.setAttribute("dList", dList);
-		}
-		
-		
-		//20代表查询医生信息
-		addRecord("20", req, resp);
+		//25代表查询科室记录
+		addRecord("25", req, resp);
 		switch (site) {
 		case 0:
-			return "/html/Guahao/doctorInfo.jsp";
-		case 1:
-			return "DoctorsSevlet?method=findAllDoctors&site=0";
+			return "/html/Guahao/keshi.jsp";
 		default:
 			return "index.jsp";
 		}
 	}
 	
-	/**
-	 * 查询所有医生信息 返回医生实体集合
-	 * @param req
-	 * @param resp
-	 * @return
-	 */
-	public String findAllDoctors(HttpServletRequest req , HttpServletResponse resp) {
+	public String searchBranch(HttpServletRequest req, HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
-		List<Doctors> dList = dd.findAll();
-		req.setAttribute("dList", dList);
 		
+		String brid = req.getParameter("brid");
+		String brname = req.getParameter("brname");
 		
-		//20代表查询医生信息
-		addRecord("20", req, resp);
+		if((brid==null || brid.equals(""))&&(brname==null || brname.equals(""))) {
+			site = 1;
+		}else if(brid==null || brid.equals("")) {
+			List<Branch> blist = bd.findByBrname(brname);
+			req.setAttribute("blist", blist);
+		}else if(brname==null || brname.equals("")) {
+			List<Branch> blist = bd.findByBridM(brid);
+			req.setAttribute("blist", blist);
+		}
+		
+		//25代表查询科室记录
+		addRecord("25", req, resp);
 		switch (site) {
 		case 0:
-			return "/html/Guahao/doctorInfo.jsp";
+			return "/html/Guahao/keshi.jsp";
 		case 1:
-			return "RegisteredServlet?method=findAllRegistered&site=0";
+			return "BranchServlet?site=0&method=findAllBranch";
 		default:
 			return "index.jsp";
 		}
 	}
-	
 	
 	
 	/**

@@ -20,7 +20,7 @@ import com.msr.hospital.dao.PatientinformationDao;
 import com.msr.hospital.dao.RegisteredDao;
 import com.msr.hospital.dao.RegistrationfeeDao;
 import com.msr.hospital.dao.TypeoftreatmentDao;
-import com.msr.hospital.dao.impl.BranchDaoImple;
+import com.msr.hospital.dao.impl.BranchDaoImpl;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;
@@ -50,7 +50,7 @@ public class PatientinformationServlet extends BaseServlet {
 		ord = new OperationRecordDaoImpl();
 		pd = new PatientinformationDaoImpl();
 		td = new TypeoftreatmentDaoImple();
-		bd = new BranchDaoImple();
+		bd = new BranchDaoImpl();
 		dd = new DoctorsDaoImpl();
 		rd = new RegistrationfeeDaoImpl();
 		rrd = new RegisteredDaoImpl();
