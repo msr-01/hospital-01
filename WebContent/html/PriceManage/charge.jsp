@@ -68,8 +68,8 @@
 			<td class="td07">200元 <a href="chufang_yiliaoEdit.jsp" target="mainFrame">>>详情</a></td>
 			<td class="td07">265元</td>
 			<td class="td07">2018-01-08</td>
-			<td class="td07">未付款&nbsp;<input name=save type="button"
-						class=buttonface value="确认付款" onclick="location.href='#'"></td>
+			<td class="td07">未付款&nbsp;&nbsp;&nbsp;&nbsp;<input name=save type="button"
+						class=buttonface  value="确认付款" onclick="location.href='#'"></td>
 		</tr>
 		<tr align="center">
 			<td class="td07">&nbsp;</td>

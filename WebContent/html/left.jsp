@@ -59,6 +59,9 @@
 							target="mainFrame" class="a03">用户管理</a></li>
 						<li><b class="tip"></b><a
 							href="operationRoom/insertkeshi.jsp" target="mainFrame"
+							class="a03">医生管理</a></li>
+						<li><b class="tip"></b><a
+							href="operationRoom/insertkeshi.jsp" target="mainFrame"
 							class="a03">科室管理</a></li>
 						<li><b class="tip"></b><a
 							href="operationRoom/insertkeshi.jsp" target="mainFrame"
@@ -67,15 +70,13 @@
 							href="operationRoom/insertkeshi.jsp" target="mainFrame"
 							class="a03">医疗设备管理</a></li>
 						<li><b class="tip"></b><a
-							href="Popedom/popedomAttribute.jsp" target="mainFrame">权限管理</a>
+							href="Popedom/popedomAttribute.jsp" target="mainFrame"
+							class="a03">权限管理</a>
 						</li>
 					</ul>
 				</div>
-
 				<div id="datepicker"></div>
-
 			</div>
-
 		</div>
 		<!--左边菜单结束-->
 		<!--右边框架开始-->
