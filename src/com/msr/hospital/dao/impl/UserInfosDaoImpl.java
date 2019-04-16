@@ -31,7 +31,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	 */
 	
 	@Override
-	public void addUserInfos(UserInfos userInfos) {
+	public void addUserInfos(UserInfos userInfos) {//增加一条用户数据
 		String sql = "insert into userinfos values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
@@ -70,7 +70,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	}
 
 	@Override
-	public void deleteUserInfos(String uid) {
+	public void deleteUserInfos(String uid) {//删除一条用户数据
 		Connection conn =DBHelper.getConn();
 		String sql = "delete from userinfos where uid = ?";
 		PreparedStatement ps = null;
@@ -97,7 +97,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	}
 
 	@Override
-	public UserInfos findByUid(String uid) {
+	public UserInfos findByUid(String uid) {//根据用户编号查询一个用户数据， 并返回用户对象
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -141,7 +141,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	}
 
 	@Override
-	public List<UserInfos> findAll() {
+	public List<UserInfos> findAll() {//查询所有的用户数据
 		String sql = "select * from userinfos u , characte c , rolename r  where u.cid = c.cid and c.rid = r.rid";
 		List<UserInfos> uList = new ArrayList<UserInfos>();
 		Connection conn = DBHelper.getConn();
@@ -185,7 +185,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	}
 
 	@Override
-	public void modifyUserInfos(UserInfos userInfos) {
+	public void modifyUserInfos(UserInfos userInfos) {//根据传入的用户对象，修改数据库中用户数据
 		String sql = "update userinfos set cid = ?, upassword = ?, uname = ?, ujobtitle = ?, uage = ?, usex = ?, uphonenumber = ?, ustatus = ?, uemail = ?, udescription = ?, jobnumber = ? where uid = ?";
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
@@ -222,7 +222,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 	}
 
 	@Override
-	public UserInfos findByjobnumber(String jobnumber) {
+	public UserInfos findByjobnumber(String jobnumber) {//根据工号查询用户数据
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;

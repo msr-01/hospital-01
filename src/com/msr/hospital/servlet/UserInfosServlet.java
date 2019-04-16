@@ -202,5 +202,35 @@ public class UserInfosServlet extends BaseServlet {
 		OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
 		ord.addOperationRecord(operationRecord);
 	}
+	/*
+	 * 添加用户
+	 */
+	private String addUser(String otid,HttpServletRequest req , HttpServletResponse resp) {
+		
+		
+		return "${pageContext.request.contextPath}/UserInfosServlet?method=UserAll";
+	}
+	/*
+	 * 修改用户
+	 */
+	private String userModify(String otid,HttpServletRequest req , HttpServletResponse resp) {
+		
+		return "${pageContext.request.contextPath}/UserInfosServlet?method=UserAll";
+	}
+	/*
+	 * 删除用户
+	 */
+	private String addUser1(String otid,HttpServletRequest req , HttpServletResponse resp) {
+	
+	return "${pageContext.request.contextPath}/UserInfosServlet?method=UserAll";
+	}
+	/*
+	 * 查看用户
+	 */
+	private String UserAll(String otid,HttpServletRequest req , HttpServletResponse resp) {
+		
+		return "User/users.jsp";
+	}
+	
 	
 }

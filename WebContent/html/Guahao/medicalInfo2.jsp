@@ -63,7 +63,7 @@
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
-		<tr>
+		<tr align="center">
 			<td class="td_top">药品编号</td>
 			<td class="td_top">药品名称</td>
 			<td class="td_top">药品规格</td>
@@ -72,14 +72,10 @@
 			<td class="td_top">生产厂家</td>
 			<td class="td_top">有效期</td>
 			<td class="td_top">库存</td>
-
 		</tr>
-	</table>
-	<table id="drug" width="95%" border="0" align="center" cellpadding="0"
-		cellspacing="0">
 		<c:if test="${!empty drList}">
 			<c:forEach var="drug" items="${drList}">
-				<tr>
+				<tr align="center">
 					<td class="td07">${drug.drid}</td>
 					<td class="td07">${drug.drname}</td>
 					<td class="td07">${drug.drformat}12粒/片<br>2片/盒</td>
@@ -92,7 +88,6 @@
 			</c:forEach>
 		</c:if>
 	</table>
-
 	<table width="95%" border="0" cellpadding="0" cellspacing="0"
 		class="table02" align="center">
 		<tr>

@@ -62,7 +62,7 @@
 						<li><b class="tip"></b><a
 							href="operationRoom/insertkeshi.jsp" target="mainFrame"
 							class="a03">添加新科室</a></li>
-						<li><b class="tip"></b><a href="User/users.jsp"
+						<li><b class="tip"></b><a href="${pageContext.request.contextPath}/UserInfosServlet?method=UserAll"
 							target="mainFrame" class="a03">用户管理</a></li>
 						<li><b class="tip"></b> <a
 							href="Popedom/popedomAttribute.jsp" target="mainFrame">角色与权限分配</a>
