@@ -45,7 +45,7 @@
 
 			<td class="td_01"><img src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="doctorInfo.jsp" target="mainFrame" class="a14">医生信息查询</a></td>
+				href="${pageContext.request.contextPath}/DoctorsSevlet?method=findAllDoctors&site=0" target="mainFrame" class="a14">医生信息查询</a></td>
 		</tr>
 		<tr>
 

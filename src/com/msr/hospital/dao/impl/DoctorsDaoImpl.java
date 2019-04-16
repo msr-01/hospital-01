@@ -179,4 +179,70 @@ public class DoctorsDaoImpl implements DoctorsDao {
 		return null;
 	}
 
+	@Override
+	public List<Doctors> findByName(String uname) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserInfosDao ud = new UserInfosDaoImpl();
+		List<Doctors> dlist = new ArrayList<Doctors>();
+		
+		String sql = "select * from userInfos u , doctors d , branch b , doctortitle dt , typeoftreatment tt where d.brid=b.brid and d.dtid = dt.dtid and  d.tyid=tt.tyid and d.uid = u.uid and u.uname like ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+uname+"%");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				
+				Typeoftreatment typeoftreatment = new Typeoftreatment(rs.getString("tyid"), rs.getString("tyname"));
+				UserInfos userInfos = ud.findByUid(rs.getString("uid"));
+				Doctortitle doctortitle = new Doctortitle(rs.getString("dtid"), rs.getString("dtname"));
+				Branch branch = new Branch(rs.getString("brid"), rs.getString("brname"), rs.getString("brlocation"));
+				Doctors doctors = new Doctors(rs.getString("doid"), branch, doctortitle, userInfos, typeoftreatment);
+				dlist.add(doctors);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return dlist;
+	}
+
+	@Override
+	public List<Doctors> findByJobnumber(String jobnumber) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserInfosDao ud = new UserInfosDaoImpl();
+		List<Doctors> dlist = new ArrayList<Doctors>();
+		
+		String sql = "select * from userInfos u , doctors d , branch b , doctortitle dt , typeoftreatment tt where d.brid=b.brid and d.dtid = dt.dtid and  d.tyid=tt.tyid and d.uid = u.uid and u.jobnumber like ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+jobnumber+"%");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				
+				Typeoftreatment typeoftreatment = new Typeoftreatment(rs.getString("tyid"), rs.getString("tyname"));
+				UserInfos userInfos = ud.findByUid(rs.getString("uid"));
+				Doctortitle doctortitle = new Doctortitle(rs.getString("dtid"), rs.getString("dtname"));
+				Branch branch = new Branch(rs.getString("brid"), rs.getString("brname"), rs.getString("brlocation"));
+				Doctors doctors = new Doctors(rs.getString("doid"), branch, doctortitle, userInfos, typeoftreatment);
+				dlist.add(doctors);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return dlist;
+	}
+
 }
