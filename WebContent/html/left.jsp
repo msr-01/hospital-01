@@ -58,7 +58,7 @@
 						<li><b class="tip"></b><a href="User/users.jsp"
 							target="mainFrame" class="a03">用户管理</a></li>
 						<li><b class="tip"></b><a
-							href="operationRoom/insertkeshi.jsp" target="mainFrame"
+							href="doctor/doctor.jsp" target="mainFrame"
 							class="a03">医生管理</a></li>
 						<li><b class="tip"></b><a
 							href="operationRoom/insertkeshi.jsp" target="mainFrame"
