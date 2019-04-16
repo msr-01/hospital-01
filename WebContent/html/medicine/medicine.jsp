@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>药品信息查询</title>
+<title>药品管理</title>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="${pageContext.request.contextPath}/js/check.js"></script>
 <script language="javascript" src="${pageContext.request.contextPath}/js/checkAll.js"></script>
@@ -29,7 +29,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 					<tr>
 						<td width="15"><img src="${pageContext.request.contextPath}/images/index_32.gif" width="9"
 							height="9"></td>
-						<td valign="bottom" class="title">药品信息查询</td>
+						<td valign="bottom" class="title">药品管理</td>
 					</tr>
 				</table></td>
 		</tr>
@@ -38,10 +38,11 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
-			<td class="td_page">药品编号： <input name="PARA_YM_NOW" size="20"
-				type="text" class="input">
+			<td class="td_page">
+				药品编号： <input name="PARA_YM_NOW" size="20" type="text" class="input">
 				药品名称：<input name="PARA_YM_NOW2" size="20" type="text" class="input">
-				<input name="chaxun" type="button" class="buttonface" value=" 查询 ">
+				<input name="chaxun" type="button" class="buttonface" value="查询 ">
+				<a href="addMedicine.jsp" target="mainFrame">&nbsp;&nbsp;添加药品信息</a>
 			</td>
 		</tr>
 	</table>
@@ -57,6 +58,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 			<td class="td_top">生产厂家</td>
 			<td class="td_top">有效期</td>
 			<td class="td_top">库存</td>
+			<td class="td_top">操作</td>
 		</tr>
 		<tr align="center">
 			<td class="td07">xy0012</td>
@@ -67,6 +69,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 			<td class="td07">哈药六厂</td>
 			<td class="td07">3年</td>
 			<td class="td07">1200盒</td>
+			<td class="td07"><a href="medicineModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
 		</tr>
 	</table>
 	<table width="95%" border="0" cellpadding="0" cellspacing="0"
@@ -78,13 +81,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 				上一页 <img src="${pageContext.request.contextPath}/images/2-2.gif" width="3" height="5"
 				align="absmiddle"> 下一页 <img src="${pageContext.request.contextPath}/images/3.gif" width="4"
 				height="5" align="absmiddle"> 末页 共 1 页 1 条记录</td>
-		</tr>
-	</table>
-	<table width="95%" border="0" align="center" cellpadding="0"
-		cellspacing="0">
-		<tr>
-			<td align="center"><input name="Return" type="button"
-				class="buttonface" value="返回" onClick="history.back(-1)"></td>
 		</tr>
 	</table>
 </body>

@@ -61,14 +61,14 @@
 							href="doctor/doctor.jsp" target="mainFrame"
 							class="a03">医生管理</a></li>
 						<li><b class="tip"></b><a
-							href="operationRoom/insertkeshi.jsp" target="mainFrame"
+							href="operationRoom/operationRoom.jsp" target="mainFrame"
 							class="a03">科室管理</a></li>
 						<li><b class="tip"></b><a
-							href="operationRoom/insertkeshi.jsp" target="mainFrame"
+							href="medicine/medicine.jsp" target="mainFrame"
 							class="a03">药品管理</a></li>
 						<li><b class="tip"></b><a
-							href="operationRoom/insertkeshi.jsp" target="mainFrame"
-							class="a03">医疗设备管理</a></li>
+							href="medicalproject/medicalproject.jsp" target="mainFrame"
+							class="a03">医疗项目管理</a></li>
 						<li><b class="tip"></b><a
 							href="Popedom/popedomAttribute.jsp" target="mainFrame"
 							class="a03">权限管理</a>
