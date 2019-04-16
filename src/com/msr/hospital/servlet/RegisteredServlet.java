@@ -252,6 +252,8 @@ public class RegisteredServlet extends BaseServlet {
 			req.setAttribute("rlist", rlist);
 		}
 		
+		//10代表查询挂号记录
+		addRecord("10", req, resp);
 		
 		switch (site) {
 		case 0:

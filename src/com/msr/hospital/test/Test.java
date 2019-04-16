@@ -30,8 +30,8 @@ import com.msr.hospital.util.TimeUtil;
 
 public class Test {
 	public static void main(String[] args) {
-		RegisteredDao rd = new RegisteredDaoImpl();
+		PatientinformationDao pd = new PatientinformationDaoImpl();
 		
-		System.out.println(rd.findbyPiname("萌").size());
+		System.out.println(pd.findAll().size());
 	}
 }

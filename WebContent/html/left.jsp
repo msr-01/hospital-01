@@ -30,7 +30,7 @@
 					<ul class="kid">
 						<li><b class="tip"></b><a href="Guahao/lists.jsp"
 							target="mainFrame" class="a03">挂号服务</a></li>
-						<li><b class="tip"></b><a href="Guahao/patientInfo.jsp"
+						<li><b class="tip"></b><a href="${pageContext.request.contextPath}/PatientinformationServlet?method=findAll&site=0"
 							target="mainFrame" class="a03">查看患者信息</a></li>
 						<li><b class="tip"></b><a href="Guahao/message.jsp"
 							target="mainFrame" class="a03">信息查询</a></li>
