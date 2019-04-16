@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查询结果</title>
+<title>药品信息查询</title>
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
 <script language="javascript"
@@ -69,9 +69,9 @@
 			<td class="td_top">药品规格</td>
 			<td class="td_top">药品单价</td>
 			<td class="td_top">药品功能</td>
+			<td class="td_top">生产厂家</td>
 			<td class="td_top">有效期</td>
 			<td class="td_top">库存</td>
-			<td nowrap class="td_top">操作</td>
 
 		</tr>
 	</table>
@@ -82,15 +82,12 @@
 				<tr>
 					<td class="td07">${drug.drid}</td>
 					<td class="td07">${drug.drname}</td>
-					<td class="td07">${drug.drformat}12粒/片<br>2片/盒
-					</td>
+					<td class="td07">${drug.drformat}12粒/片<br>2片/盒</td>
 					<td class="td07">${drug.drunitprice}</td>
 					<td class="td07">${drug.drfunction}</td>
 					<td class="td07">${drug.drmanufacturer}</td>
 					<td class="td07">${drug.dreffectiveperiod}</td>
-					<td class="td07">${drug.drinstock}
-					<a href="medicalInfoList.jsp" target="mainFrame"> >>详情</a>&nbsp;&nbsp;
-					</td>
+					<td class="td07">${drug.drinstock}</td>
 				</tr>
 			</c:forEach>
 		</c:if>
