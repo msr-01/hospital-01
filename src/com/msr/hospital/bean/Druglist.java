@@ -5,7 +5,7 @@ import java.util.List;
 public class Druglist {
 	private String dlid;
 	private Prescription prescription;
-	private List<Drug> dlist;
+	private Drug drug;
 	private int drnum;
 	private double total;
 	public String getDlid() {
@@ -20,11 +20,11 @@ public class Druglist {
 	public void setPrescription(Prescription prescription) {
 		this.prescription = prescription;
 	}
-	public List<Drug> getDlist() {
-		return dlist;
+	public Drug getDrug() {
+		return drug;
 	}
-	public void setDlist(List<Drug> dlist) {
-		this.dlist = dlist;
+	public void setDrug(Drug drug) {
+		this.drug = drug;
 	}
 	public int getDrnum() {
 		return drnum;
@@ -38,11 +38,11 @@ public class Druglist {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public Druglist(String dlid, Prescription prescription, List<Drug> dlist, int drnum, double total) {
+	public Druglist(String dlid, Prescription prescription, Drug drug, int drnum, double total) {
 		super();
 		this.dlid = dlid;
 		this.prescription = prescription;
-		this.dlist = dlist;
+		this.drug = drug;
 		this.drnum = drnum;
 		this.total = total;
 	}
@@ -50,6 +50,8 @@ public class Druglist {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 }

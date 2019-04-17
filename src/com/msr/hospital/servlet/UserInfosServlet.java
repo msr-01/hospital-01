@@ -66,8 +66,6 @@ public class UserInfosServlet extends BaseServlet {
 	}
 	
 	
-	
-	
 	/**
 	 * 获取所有UserInfos信息  返回uList集合 存入 req中转发
 	 * @param req

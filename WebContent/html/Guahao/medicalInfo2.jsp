@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>药品信息查询</title>
+<title>查询结果</title>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="${pageContext.request.contextPath}/js/check.js"></script>
 <script language="javascript" src="${pageContext.request.contextPath}/js/checkAll.js"></script>
@@ -48,25 +48,59 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
-		<tr align="center">
+		<tr>
 			<td class="td_top">药品编号</td>
 			<td class="td_top">药品名称</td>
 			<td class="td_top">药品规格</td>
 			<td class="td_top">药品单价</td>
 			<td class="td_top">药品功能</td>
-			<td class="td_top">生产厂家</td>
 			<td class="td_top">有效期</td>
 			<td class="td_top">库存</td>
+			<td nowrap class="td_top">操作</td>
+
 		</tr>
-		<tr align="center">
+		<tr>
 			<td class="td07">xy0012</td>
 			<td class="td07">感冒灵</td>
-			<td class="td07">12粒/片<br>2片/盒</td>
+			<td class="td07">12粒/片<br>2片/盒
+			</td>
 			<td class="td07">15.0</td>
 			<td class="td07">主治感冒、发烧</td>
-			<td class="td07">哈药六厂</td>
 			<td class="td07">3年</td>
 			<td class="td07">1200盒</td>
+			<td class="td07"><a href="medicalInfoList.jsp"
+				target="mainFrame">>>详情</a>&nbsp;&nbsp;</td>
+
+		</tr>
+		<tr>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
 		</tr>
 	</table>
 	<table width="95%" border="0" cellpadding="0" cellspacing="0"

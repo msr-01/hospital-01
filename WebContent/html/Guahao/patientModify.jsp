@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,42 +24,39 @@
 					</table></td>
 			</tr>
 		</table>
-		<form name="form1" method="post" action="">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/PatientinformationServlet?method=ModifyPatientinformation&site=1">
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊卡号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="piid" type="text"
+						class="input" value="${patientinformation.piid }"></td>
 					<td width="90" height="24" class="td_form01">患者姓名</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="piname" type="text"
+						class="input" value="${patientinformation.piname }"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">患者性别</td>
-					<td class="td_form02"><select name="select3">
-							<option>--请选择--</option>
+					<td class="td_form02"><select name="pisex">
+							<option>${patientinformation.pisex }</option>
 							<option>男</option>
 							<option>女</option>
 					</select></td>
 					<td width="90" height="24" class="td_form01">患者年龄</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="piage" type="text"
+						class="input" value="${patientinformation.piage }"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">手机号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
-					<td width="90" height="24" class="td_form01">居住地址</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="piphonenumber" type="text"
+						class="input" value="${patientinformation.piphonenumber }"></td>
 				</tr>
 			</table>
 			<br>
 			<table width="95%" border="0" align="center" cellpadding="0"
 				cellspacing="0">
 				<tr>
-					<td align="center"><input name=save type="button"
-						class=buttonface value="提交" onclick="location.href='#'"> <input
+					<td align="center"><input name=save type="submit"
+						class=buttonface value="提交" > <input
 						name="Reset" type="button" class="buttonface" value="重置"
 						onClick="location.href='#'"> <input name="Return"
 						type="button" class="buttonface" value="返回"

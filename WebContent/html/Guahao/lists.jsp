@@ -46,7 +46,7 @@
 			<td class="td_01"><img
 				src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="guahao.jsp" target="mainFrame" class="a14">门诊挂号</a></td>
+				href="${pageContext.request.contextPath}/RegisteredServlet?site=0&method=TypeBranchInfo" target="mainFrame" class="a14">门诊挂号</a></td>
 		</tr>
 
 		<tr>
@@ -54,7 +54,7 @@
 			<td class="td_01"><img
 				src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="info.jsp" target="mainFrame" class="a14">挂号信息查询/修改/删除</a></td>
+				href="${pageContext.request.contextPath}/RegisteredServlet?method=findAllRegistered&site=0" target="mainFrame" class="a14">挂号信息查询/修改/删除</a></td>
 		</tr>
 		<tr>
 	</table>
