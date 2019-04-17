@@ -48,7 +48,7 @@
 				<div>
 					<a class="one">划价管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a href="PriceManage/charge.jsp"
+						<li><b class="tip"></b><a href="${pageContext.request.contextPath}/PrescriptionSevlet?method=findAllPrescription&site=0"
 							target="mainFrame" class="a03">划价收费</a></li>
 					</ul>
 				</div>

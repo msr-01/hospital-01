@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.msr.hospital.bean.Druglist;
@@ -70,6 +71,73 @@ public class PrescriptionDaoImpl implements PrescriptionDao {
 				System.out.println("Prescription插入成功");
 			}else {
 				System.out.println("Prescription插入失败");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+		
+	}
+
+	@Override
+	public List<Prescription> findAll() {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DruglistDao dld = new DruglistDaoImpl();
+		MedicallistDao mld = new MedicallistDaoImpl();
+		List<Prescription> plist = new ArrayList<Prescription>();
+		
+		String sql = "select * from prescription order by ppordertime desc";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String ppid = rs.getString("ppid");
+				List<Medicallist> medicallist = mld.findByppid(ppid);				
+				List<Druglist> druglist = dld.findByppid(ppid);
+				Prescription prescription = new Prescription(ppid, Integer.parseInt(rs.getString("ppstatus")), rs.getString("ppordertime"), rs.getString("pppaymenttime"), druglist, Double.parseDouble(rs.getString("dltotal")), medicallist, Double.parseDouble(rs.getString("mltotal")), Double.parseDouble(rs.getString("total")));
+				plist.add(prescription);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		
+		return plist;
+	}
+
+	@Override
+	public void modifyprescription(Prescription prescription) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		String sql = "update prescription set ppstatus = ?, ppordertime = ?, pppaymenttime =?,dltotal = ?, mltotal = ?, total = ? where ppid = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, prescription.getPpstatus());
+			ps.setString(2, prescription.getPpordertime());
+			ps.setString(3, prescription.getPppaymenttime());
+			ps.setDouble(4, prescription.getDltotal());
+			ps.setDouble(5, prescription.getMltotal());
+			ps.setDouble(6, prescription.getTotal());
+			ps.setString(7, prescription.getPpid());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("prescription修改成功");
+			}else {
+				System.out.println("prescription修改失败");
 			}
 			
 		} catch (SQLException e) {
