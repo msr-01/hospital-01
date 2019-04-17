@@ -56,8 +56,8 @@
 							<a href="${pageContext.request.contextPath}/MedicalrecordSevlet?method=getOnePrescription&site=0&ppid=${mr.prescription.ppid }" target="mainFrame">详情</a>
 						</td>
 						<td class="td07">
-							<a href="html/disease/patientModify.jsp" target="mainFrame">修改</a> 
-							<a href="#" target="mainFrame">&nbsp;&nbsp;删除</a>
+							<a href="${pageContext.request.contextPath}/MedicalrecordSevlet?method=modifyMedicalrecord&site=0&mrid=${mr.mrid }" target="mainFrame">修改</a> 
+							<a href="${pageContext.request.contextPath}/MedicalrecordSevlet?method=deleteMedicalrecord&site=0&mrid=${mr.mrid }" target="mainFrame">&nbsp;&nbsp;删除</a>
 						</td>
 					</tr>
 				</c:forEach>

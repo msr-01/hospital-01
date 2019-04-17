@@ -8,5 +8,7 @@ public interface PrescriptionDao {
 	
 	//添加处方信息
 	void addPrescription(Prescription prescription);
+	
+	
 
 }

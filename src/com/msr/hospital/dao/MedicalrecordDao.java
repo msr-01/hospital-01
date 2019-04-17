@@ -14,4 +14,10 @@ public interface MedicalrecordDao {
 	
 	//添加病例信息
 	void addMedicalrecord(Medicalrecord medicalrecord);
+	
+	//根据病例编号查询病例信息
+	Medicalrecord findByMrid(String mrid);
+	
+	//根据传入的病例对象删除病例信息
+	void deleteMedicalrecord(Medicalrecord medicalrecord);
 }

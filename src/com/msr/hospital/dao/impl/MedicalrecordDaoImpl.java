@@ -124,4 +124,91 @@ public class MedicalrecordDaoImpl implements MedicalrecordDao {
 		
 	}
 
+	@Override
+	public Medicalrecord findByMrid(String mrid) {
+		DoctorsDao dd = new DoctorsDaoImpl();
+		PatientinformationDao pd = new PatientinformationDaoImpl();
+		PrescriptionDao ppd = new PrescriptionDaoImpl();
+		
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from medicalrecord where mrid = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mrid);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				
+				String ppid = rs.getString("ppid");
+				Prescription prescription = ppd.findByppid(ppid);
+				Patientinformation patientinformation = pd.findByPiid(rs.getString("piid"));
+				Doctors doctors = dd.findByDoid(rs.getString("doid")); 
+				Medicalrecord medicalrecord = new Medicalrecord(rs.getString("mrid"), patientinformation, prescription, doctors, rs.getString("diagnosistime"), rs.getString("diagnosisresult"), rs.getString("diagnosismethod"));
+				return medicalrecord;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void deleteMedicalrecord(Medicalrecord medicalrecord) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		String sql1 = "delete from medicallist where ppid = ?";
+		String sql2 = "delete from druglist where ppid = ?";
+		String sql3 = "delete from Medicalrecord where mrid = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql1);
+			ps.setString(1, medicalrecord.getPrescription().getPpid());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("medicallist删除成功");
+			}else {
+				System.out.println("medicallist删除失败");
+			}
+			
+			ps.close();
+			
+			ps = conn.prepareStatement(sql2);
+			ps.setString(1, medicalrecord.getPrescription().getPpid());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("druglist删除成功");
+			}else {
+				System.out.println("druglist删除失败");
+			}
+			
+			ps.close();
+			
+			ps = conn.prepareStatement(sql3);
+			ps.setString(1, medicalrecord.getMrid());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("Medicalrecord删除成功");
+			}else {
+				System.out.println("Medicalrecord删除失败");
+			}
+
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
 }

@@ -294,6 +294,138 @@ public class MedicalrecordSevlet extends BaseServlet {
 		}
 		
 	}
+	/**
+	 * 根据病例编号 删除病例记录
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	
+	public String deleteMedicalrecord(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		String mrid = req.getParameter("mrid");
+		Medicalrecord medicalrecord = mrd.findByMrid(mrid);
+		mrd.deleteMedicalrecord(medicalrecord);
+		
+		
+		//37代表删除病例项目记录
+		addRecord("37", req, resp);
+		switch (site) {
+		case 0:
+			return "MedicalrecordSevlet?method=findAllMrecord&site=0";
+		case 1:
+			return "MedicalprojectSevlet?site=0&method=findAllmd";
+		default:
+			return "index.jsp";
+		}
+	}
+	
+	/**
+	 * 修改病例信息
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	public String modifyMedicalrecord(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		switch (site) {
+		case 0:
+			String mrid = req.getParameter("mrid");
+			Medicalrecord medicalrecord = mrd.findByMrid(mrid);
+			req.setAttribute("medicalrecord", medicalrecord);
+			return "/html/disease/patientModify.jsp";
+		case 1:
+			Map<String, String[]> parameterMap = req.getParameterMap();
+			List<String> dridlist = new ArrayList<String>();
+			List<Integer> drnumlist = new ArrayList<Integer>();
+			List<String> mpidlist = new ArrayList<String>();
+			
+			for (String key : parameterMap.keySet()) {
+				System.out.println("key:"+key);
+				for(String value : parameterMap.get(key)) {
+					if(key.contains("drid")) {
+						dridlist.add(value);
+					}else if(key.contains("drnum")) {
+						drnumlist.add(Integer.parseInt(value));
+					}else if(key.contains("mpid")) {
+						mpidlist.add(value);
+					}
+					System.out.println("value:" + value);
+				}
+			}
+			String mrid1 = req.getParameter("mrid");
+			
+			
+			Medicalrecord medicalrecord1 = mrd.findByMrid(mrid1);
+			mrd.deleteMedicalrecord(medicalrecord1);
+			
+			String piid = req.getParameter("piid");
+			String jobnumber = req.getParameter("jobnumber");
+			String diagnosistime = req.getParameter("diagnosistime");
+			String diagnosismethod = req.getParameter("diagnosismethod");
+			String diagnosisresult = req.getParameter("diagnosisresult");
+			System.out.println(dridlist.size());
+			System.out.println(drnumlist.size());
+			System.out.println(mpidlist.size());
+			Doctors doctors = dd.findByJobnumber(jobnumber).get(0);
+			Patientinformation patientinformation = pd.findByPiid(piid);
+			String ppid = UUIDUtils.getId();
+			
+			List<Druglist> druglist = new ArrayList<Druglist>();
+			double dltotal = 0;
+			for (int i = 0; i < dridlist.size(); i++) {
+				
+				String dlid = UUIDUtils.getId();
+				Prescription prescription = new Prescription();
+				prescription.setPpid(ppid);
+				Drug drug = dgd.findByDrid(dridlist.get(i));
+				int drnum = drnumlist.get(i);
+				double total = drug.getDrunitprice() * drnum ;
+				dltotal += total;
+				Druglist dl = new Druglist(dlid, prescription, drug, drnum, total);
+				dld.addDruglist(dl);
+				druglist.add(dl);
+			}
+			
+			List<Medicallist> medicallist = new ArrayList<Medicallist>();
+			double mltotal = 0;
+			for (int i = 0; i < mpidlist.size(); i++) {
+				
+				
+				String mlid = UUIDUtils.getId();
+				Prescription prescription = new Prescription();
+				prescription.setPpid(ppid);
+				
+				Medicalproject medicalproject  = md.findByMpid(mpidlist.get(i)).get(0);
+				
+				mltotal += medicalproject.getMpprice();
+				
+				Medicallist dl = new Medicallist(mlid, medicalproject, prescription, medicalproject.getMpprice());
+				
+				mld.addMedicallist(dl);
+				
+			}
+			
+			
+			Prescription prescription = new Prescription(ppid, 0, diagnosistime, diagnosistime, druglist, dltotal, medicallist, mltotal, (dltotal+mltotal));
+			
+			ppd.addPrescription(prescription);
+			
+			Medicalrecord medicalrecord2 = new Medicalrecord(mrid1, patientinformation, prescription, doctors, diagnosistime, diagnosisresult, diagnosismethod);
+			
+			mrd.addMedicalrecord(medicalrecord2);
+			
+			
+			//36代表修改病例项目记录
+			addRecord("36", req, resp);
+			return "MedicalrecordSevlet?method=findAllMrecord&site=0";
+		default:
+			return "index.jsp";
+		}
+	}
+	
+	
+	
 	
 	/**
 	 * 增加操作记录
