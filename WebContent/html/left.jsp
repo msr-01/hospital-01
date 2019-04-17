@@ -19,9 +19,6 @@
 </head>
 <body>
 	<div>
-		<!--头部开始-->
-		<!--头部结束-->
-		<!--左边菜单开始-->
 		<div class="left_c left" style="top: 10px">
 			<h1>系统操作菜单</h1>
 			<div class="acc">
