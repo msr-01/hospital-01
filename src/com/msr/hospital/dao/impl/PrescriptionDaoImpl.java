@@ -49,4 +49,37 @@ public class PrescriptionDaoImpl implements PrescriptionDao {
 		return null;
 	}
 
+	@Override
+	public void addPrescription(Prescription prescription) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		String sql = "insert into prescription values(?,?,?,?,?,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, prescription.getPpid());
+			ps.setInt(2, prescription.getPpstatus());
+			ps.setString(3, prescription.getPpordertime());
+			ps.setString(4, prescription.getPppaymenttime());
+			ps.setDouble(5, prescription.getDltotal());
+			ps.setDouble(6, prescription.getMltotal());
+			ps.setDouble(7, prescription.getTotal());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("Prescription插入成功");
+			}else {
+				System.out.println("Prescription插入失败");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+		
+	}
+
 }

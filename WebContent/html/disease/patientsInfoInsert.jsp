@@ -24,7 +24,7 @@
 				$.each(JSONobj,function(index,drug){
 					$("#drugtable").append("<tr><td class='td07' align='center' id='drname"+(index+count)+"'>"+drug.drname+"</td><td class='td07' align='center' id='drid"+(index+count)+"'>"+drug.drid+"</td><td class='td07' align='center' id='drunitprice"+(index+count)+"'>"+drug.drunitprice+"</td><td class='td07' align='center'><input type='button' value='+' id='drbt"+(index+count)+"')></td></tr>");
 					$("#drbt"+(index+count)).click(function(){
-						$("#drretb").append("<tr id='drtr'><td class='td07' align='center'>"+$("#drname"+(index+count)).html()+"</td><td class='td07' align='center'>"+$("#drid"+(index+count)).html()+"</td><td class='td07' align='center'>"+$("#drunitprice"+(index+count)).html()+"</td><td class='td07' align='center'><input name='textfield24' type='text' class='input' id='drnum"+(index+count)+"'></td><td class='td07' align='center'><input type='button' value='-' id='drbtsub"+(index+count)+"'></td></tr>");
+						$("#drretb").append("<tr id='drtr'><td class='td07' align='center'>"+$("#drname"+(index+count)).html()+"</td><td class='td07' align='center'><input name='drid"+(index+count)+"' type='text' class='input'  value='"+$("#drid"+(index+count)).html()+"'></td><td class='td07' align='center'>"+$("#drunitprice"+(index+count)).html()+"</td><td class='td07' align='center'><input name='drnum"+(index+count)+"' type='text' class='input' id='drnum"+(index+count)+"'></td><td class='td07' align='center'><input type='button' value='-' id='drbtsub"+(index+count)+"'></td></tr>");
 						$("#drbtsub"+(index+count)).click(function(){
 							$("#drtr").remove();
 						});
@@ -42,7 +42,7 @@
 				$.each(JSONobj,function(index,mp){
 					$("#mptable").append("<tr><td class='td07' align='center' id='mpname"+(index+count)+"'>"+mp.mpname+"</td><td class='td07' align='center' id='mpid"+(index+count)+"'>"+mp.mpid+"</td><td class='td07' align='center' id='mpprice"+(index+count)+"'>"+mp.mpprice+"</td><td class='td07' align='center'><input type='button' value='+' id='mpbt"+(index+count)+"')></td></tr>");
 					$("#mpbt"+(index+count)).click(function(){
-						$("#mpretb").append("<tr id='mptr'><td class='td07' align='center'>"+$("#mpname"+(index+count)).html()+"</td><td class='td07' align='center'>"+$("#mpid"+(index+count)).html()+"</td><td class='td07' align='center'>"+$("#mpprice"+(index+count)).html()+"</td><td class='td07' align='center'><input type='button' value='-' id='mpbtsub"+(index+count)+"'></td></tr>");
+						$("#mpretb").append("<tr id='mptr'><td class='td07' align='center'>"+$("#mpname"+(index+count)).html()+"</td><td class='td07' align='center'><input name='mpid"+(index+count)+"' type='text' class='input'  value='"+$("#mpid"+(index+count)).html()+"'></td><td class='td07' align='center'>"+$("#mpprice"+(index+count)).html()+"</td><td class='td07' align='center'><input type='button' value='-' id='mpbtsub"+(index+count)+"'></td></tr>");
 						$("#mpbtsub"+(index+count)).click(function(){
 							$("#mptr").remove();
 						});
@@ -95,13 +95,13 @@
 		<br>
 		<br>
 		
-		<form name="form1" method="post" action="">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/MedicalrecordSevlet?method=addMedicalrecord&site=0">
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 
 					<td width="90" class="td_form01">就诊卡号</td>
 					<td class="td_form02">
-					<input name="textfield24" type="text" class="input" id="piid">
+					<input name="piid" type="text" class="input" id="piid">
 					<input name="textfield24" type="button" class="buttonface" value="查询" id="search">
 					</td>
 					<td width="90" class="td_form01">患者姓名</td>
@@ -124,21 +124,21 @@
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">医生编号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="jobnumber" type="text"
 						class="input" value="${userInfos.jobnumber }"></td>
 					<td width="90" height="24" class="td_form01">诊断时间</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="diagnosistime" type="text"
 						class="input" id="time"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">诊断方法</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="diagnosismethod" type="text"
 						class="input" id="meh"></td>
 				</tr>
 				<tr align="left" nowrap>
 					<td height="24" align="center" class=td_form01>诊断结果：</td>
 					<td height="24" colspan="5" align="left" valign="middle"
-						class=td_form01><label> <textarea name="textarea"
+						class=td_form01><label> <textarea name="diagnosisresult"
 								id="textarea" cols="100" rows="5"></textarea>
 					</label></td>
 				</tr>
@@ -183,7 +183,7 @@
 				<tr>
 					<td class="td_page">
 						医疗项目名称：<input name="mpname" size="10" type="text" class="input" id="mpname">
-						医疗项目编号：<input name="mpid" size="10" type="text" class="input" id="mpid">
+						医疗项目编号：<input name="" size="10" type="text" class="input" id="mpid">
 						<input name="Submit" type="button" class="buttonface" value="查询 " id="mp">
 					</td>
 				</tr>
@@ -225,11 +225,8 @@
 			<table width="95%" border="0" align="center" cellpadding="0"
 				cellspacing="0">
 				<tr>
-					<td align="center"><input name=save type="button"
-						class=buttonface value="提交" onclick="location.href='#'"> <input
-						name="Reset" type="button" class="buttonface" value="重置"
-						onClick="location.href='#'"> <input name="Return"
-						type="button" class="buttonface" value="返回"
+					<td align="center"><input name=save type="submit" class=buttonface value="提交" > 
+					<input name="Reset" type="button" class="buttonface" value="重置" onClick="location.href='#'"> <input name="Return" type="button" class="buttonface" value="返回"
 						onClick="history.back(-1)"></td>
 				</tr>
 			</table>

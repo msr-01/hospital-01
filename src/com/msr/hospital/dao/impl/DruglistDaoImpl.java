@@ -54,6 +54,36 @@ public class DruglistDaoImpl implements DruglistDao {
 		return dlist;
 	}
 
+	@Override
+	public void addDruglist(Druglist druglist) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		String sql = "insert into druglist values(?,?,?,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, druglist.getDlid());
+			ps.setString(2, druglist.getPrescription().getPpid());
+			ps.setString(3, druglist.getDrug().getDrid());
+			ps.setInt(4, druglist.getDrnum());
+			ps.setDouble(5, druglist.getTotal());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("druglist插入成功");
+			}else {
+				System.out.println("druglist插入失败");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
 	
 	
 	

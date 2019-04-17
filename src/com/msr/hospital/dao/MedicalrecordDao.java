@@ -10,4 +10,8 @@ public interface MedicalrecordDao {
 	
 	//查询所有病例信息
 	List<Medicalrecord> findAll();
+	
+	
+	//添加病例信息
+	void addMedicalrecord(Medicalrecord medicalrecord);
 }

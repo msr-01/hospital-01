@@ -14,7 +14,7 @@
 		$("#time").val( d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
 		
 		$("#branch").change(function(){
-			$.post("../../JSONSevlet",{tyid:$("#type").val(),brid:$("#branch").val(),method:1},function(data){
+			$.post("JSONSevlet",{tyid:$("#type").val(),brid:$("#branch").val(),method:1},function(data){
 				var JSONobj = JSON.parse(data);	
 				
 				$("#doctor").empty();
@@ -24,14 +24,14 @@
 				});
 			});
 			
-			$.post("../../JSONSevlet",{brid:$("#branch").val(),method:2},function(data){
+			$.post("JSONSevlet",{brid:$("#branch").val(),method:2},function(data){
 				var br = JSON.parse(data);	
 				$("#location").val(br.brlocation);
 			});
 		});
 		
 		$("#type").change(function(){
-			$.post("../../JSONSevlet",{tyid:$("#type").val(),brid:$("#branch").val(),method:1},function(data){
+			$.post("JSONSevlet",{tyid:$("#type").val(),brid:$("#branch").val(),method:1},function(data){
 				var JSONobj = JSON.parse(data);	
 				$("#doctor").empty();
 				$("#doctor").append("<option value=''>"+"请选择"+"</option>");
@@ -42,14 +42,14 @@
 		});
 		
 		$("#doctor").change(function(){
-			$.post("../../JSONSevlet",{doid:$("#doctor").val(),method:3},function(data){
+			$.post("JSONSevlet",{doid:$("#doctor").val(),method:3},function(data){
 				var cost = JSON.parse(data);	
 				$("#cost").val(cost.rfcost);	
 			});
 		});
 		
 		$("#search").click(function(){
-			$.post("../././JSONSevlet",{piid:$("#piid").val(),method:4},function(data){
+			$.post("JSONSevlet",{piid:$("#piid").val(),method:4},function(data){
 				if(data == ''){
 					alert("不存在这个就诊卡号，请重新输入或申请新卡");
 				}else{

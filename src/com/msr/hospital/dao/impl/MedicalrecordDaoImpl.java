@@ -90,4 +90,38 @@ public class MedicalrecordDaoImpl implements MedicalrecordDao {
 		return mrlist;
 	}
 
+	@Override
+	public void addMedicalrecord(Medicalrecord medicalrecord) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		
+		String sql = "insert into medicalrecord value(?,?,?,?,?,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, medicalrecord.getMrid());
+			ps.setString(2, medicalrecord.getPatientinformation().getPiid());
+			ps.setString(3, medicalrecord.getPrescription().getPpid());
+			ps.setString(4, medicalrecord.getDoctors().getDoid());
+			ps.setString(5, medicalrecord.getDiagnosistime());
+			ps.setString(6, medicalrecord.getDiagnosisresult());
+			ps.setString(7, medicalrecord.getDiagnosismethod());
+			rs = ps.executeUpdate();
+			if(rs > 0) {
+				System.out.println("Medicalrecord插入成功");
+			}else {
+				System.out.println("Medicalrecord插入失败");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
 }
