@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改用户</title>
+<title>添加用户</title>
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
 </head>
@@ -17,7 +17,7 @@
 						<td width="15"><img
 							src="${pageContext.request.contextPath}/images/index_32.gif"
 							width="9" height="9"></td>
-						<td valign="bottom" class="title">修改用户 </td>
+						<td valign="bottom" class="title">添加用户</td>
 					</tr>
 				</table></td>
 		</tr>

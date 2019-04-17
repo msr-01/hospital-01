@@ -53,28 +53,30 @@
 					</ul>
 				</div>
 				<div>
-					<a class="one">用户与权限管理</a>
+					<a class="one">系统管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a href="Publish/publishannounce.jsp"
-							target="mainFrame" class="a03">发布公告信息</a></li>
-						<li><b class="tip"></b><a href="Publish/announce.jsp"
-							target="mainFrame" class="a03">公布信息的删除/修改</a></li>
-						<li><b class="tip"></b><a
-							href="operationRoom/insertkeshi.jsp" target="mainFrame"
-							class="a03">添加新科室</a></li>
 						<li><b class="tip"></b><a href="User/users.jsp"
 							target="mainFrame" class="a03">用户管理</a></li>
-						<li><b class="tip"></b> <a
-							href="Popedom/popedomAttribute.jsp" target="mainFrame">角色与权限分配</a>
+						<li><b class="tip"></b><a
+							href="doctor/doctor.jsp" target="mainFrame"
+							class="a03">医生管理</a></li>
+						<li><b class="tip"></b><a
+							href="operationRoom/operationRoom.jsp" target="mainFrame"
+							class="a03">科室管理</a></li>
+						<li><b class="tip"></b><a
+							href="medicine/medicine.jsp" target="mainFrame"
+							class="a03">药品管理</a></li>
+						<li><b class="tip"></b><a
+							href="medicalproject/medicalproject.jsp" target="mainFrame"
+							class="a03">医疗项目管理</a></li>
+						<li><b class="tip"></b><a
+							href="Popedom/popedomAttribute.jsp" target="mainFrame"
+							class="a03">权限管理</a>
 						</li>
-
 					</ul>
 				</div>
-
 				<div id="datepicker"></div>
-
 			</div>
-
 		</div>
 		<!--左边菜单结束-->
 		<!--右边框架开始-->

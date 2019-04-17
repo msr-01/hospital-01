@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户操作</title>
+<title>医疗项目管理</title>
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
 <script language="javascript"
@@ -36,7 +36,7 @@
 						<td width="15"><img
 							src="${pageContext.request.contextPath}/images/index_32.gif"
 							width="9" height="9"></td>
-						<td valign="bottom" class="title">用户操作</td>
+						<td valign="bottom" class="title">医疗项目管理</td>
 					</tr>
 				</table></td>
 		</tr>
@@ -46,40 +46,27 @@
 		cellspacing="0">
 		<tr>
 			<td class="td_page">
-				用户姓名：<input name="PARA_YM_NOW" size="10" type="text" class="input">
-				用户编码：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
+				医疗项目编号： <input name="PARA_YM_NOW" size="10" type="text" class="input">
+				医疗项目名称：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
 				<input name="Submit" type="submit" class="buttonface" value="查询 ">
-				<a href="addUser.jsp" target="mainFrame">&nbsp;&nbsp;添加用户信息</a>
+				<a href="addMedicalproject.jsp" target="mainFrame">&nbsp;&nbsp;添加医疗项目</a>
 			</td>
 		</tr>
 	</table>
 	<br>
-	<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
-		<tr align="center">
-			<td class="td_top">用户编码</td>
-			<td class="td_top">登陆密码</td>
-			<td class="td_top">姓名</td>
-			<td class="td_top">性别</td>
-			<td class="td_top">年龄</td>
-			<td class="td_top">工号</td>
-			<td class="td_top">职称</td>
-			<td class="td_top">电话</td>
-			<td class="td_top">邮箱</td>
-			<td class="td_top">状态</td>
+	<table width="95%" border="0" align="center" cellpadding="0"
+		cellspacing="0" class="table01">
+		<tr>
+			<td class="td_top">医疗项目编号</td>
+			<td class="td_top">医疗项目名称</td>
+			<td class="td_top">医疗项目价格</td>
 			<td class="td_top">操作</td>
 		</tr>
-		<tr align="center">
-			<td class="td07">1</td>
-			<td class="td07">123456</td>
-			<td class="td07">文都苏</td>
-			<td class="td07">男</td>
-			<td class="td07">18</td>
-			<td class="td07">1</td>
-			<td class="td07">院长</td>
-			<td class="td07">07032132121</td>
-			<td class="td07">23121231@2123</td>
-			<td class="td07">在职</td>
-			<td class="td07"><a href="userModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+		<tr>
+			<td class="td07">1001</td>
+			<td class="td07">心电图</td>
+			<td class="td07">200.00元/次</td>
+			<td class="td07"><a href="medicalprojectModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
 		</tr>
 	</table>
 	<table width="95%" border="0" cellpadding="0" cellspacing="0"
@@ -98,4 +85,3 @@
 	</table>
 </body>
 </html>
-

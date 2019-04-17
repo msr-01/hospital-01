@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改用户</title>
+<title>添加医生信息</title>
 <link href="${pageContext.request.contextPath}/css/style.css"
 	rel="stylesheet" type="text/css">
 </head>
@@ -17,7 +17,7 @@
 						<td width="15"><img
 							src="${pageContext.request.contextPath}/images/index_32.gif"
 							width="9" height="9"></td>
-						<td valign="bottom" class="title">修改用户 </td>
+						<td valign="bottom" class="title">添加医生信息</td>
 					</tr>
 				</table></td>
 		</tr>
@@ -25,31 +25,45 @@
 	<form name="form1" method="post" action="">
 		<table width="95%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td width="90" height="24" class="td_form01">用户编码</td>
+				<td width="90" height="24" class="td_form01">医生工号</td>
 				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
-				<td width="90" height="24" class="td_form01">登陆密码</td>
-				<td class="td_form02"><input name="textfield24" type="text"
-					class="input"></td>
+				<td width="90" height="24" class="td_form01">医生职称</td>
+				<td class="td_form02"><select name="select3">
+						<option>--请选择--</option>
+						<option>院长</option>
+						<option>主任</option>
+						<option>专家</option>
+						<option>主治医师</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td width="90" height="24" class="td_form01">姓名</td>
+				<td width="90" height="24" class="td_form01">医生姓名</td>
 				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
-				<td width="90" height="24" class="td_form01">性别</td>
-				<td class="td_form02"><input name="textfield24" type="text"
-					class="input"></td>
+				<td width="90" height="24" class="td_form01">医生性别</td>
+				<td class="td_form02"><select name="select3">
+						<option>--请选择--</option>
+						<option>男</option>
+						<option>女</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td width="90" height="24" class="td_form01">年龄</td>
+				<td width="90" height="24" class="td_form01">医生年龄</td>
 				<td class="td_form02"><input name="textfield24" type="text"
 					class="input"></td>
-				<td width="90" height="24" class="td_form01">工号</td>
-				<td class="td_form02"><input name="textfield24" type="text"
-					class="input"></td>
+				<td width="90" height="24" class="td_form01">医生科室</td>
+				<td class="td_form02"><select name="select3">
+						<option>--请选择--</option>
+						<option>耳鼻喉科</option>
+						<option>内科</option>
+						<option>肛肠科</option>
+						<option>妇科</option>
+						<option>外科</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td width="90" height="24" class="td_form01">职称</td>
+				<td width="90" height="24" class="td_form01">挂号类型</td>
 				<td class="td_form02"><select name="select3">
 						<option>--请选择--</option>
 						<option>院长</option>
@@ -62,9 +76,6 @@
 					class="input"></td>
 			</tr>
 			<tr>
-				<td width="90" height="24" class="td_form01">邮箱</td>
-				<td class="td_form02"><input name="textfield24" type="text"
-					class="input"></td>
 				<td width="90" height="24" class="td_form01">状态</td>
 				<td class="td_form02"><select name="select3">
 						<option>--请选择--</option>
