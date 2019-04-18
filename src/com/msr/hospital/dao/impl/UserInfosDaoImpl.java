@@ -17,19 +17,6 @@ import com.msr.hospital.dao.UserInfosDao;
 import com.msr.hospital.util.DBHelper;
 
 public class UserInfosDaoImpl implements UserInfosDao {
-	/**
-	 * String uid;//varchar(32)
-		String cid; //(32)
-		String upassword;	//varchar(50)
-		String uname;	//varchar(50)
-		String ujobtitle;	//varchar(50)
-		int  uage;	//int(11)
-		String usex;	//char(2)
-		String uphonenumber;	//varchar(50)
-		int ustatus;	 //int(11)
-		String uemail;	//varchar(100)
-		String udescription;	//varchar(500)
-	 */
 	
 	@Override
 	public void addUserInfos(UserInfos userInfos) {

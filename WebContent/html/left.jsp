@@ -100,7 +100,7 @@
 							</c:if>
 							<c:if test="${fn:contains(userInfos.characte.rolepermissions.popedom , 'i' )}">
 								<li><b class="tip"></b><a
-								href="Popedom/popedom.jsp" target="mainFrame"
+								href="${pageContext.request.contextPath}/CharacteServlet?method=getAllCaracte&site=0" target="mainFrame"
 								class="a03">权限管理</a>
 							</li>
 							</c:if>
