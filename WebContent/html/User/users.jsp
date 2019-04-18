@@ -58,6 +58,7 @@
 		<tr align="center">
 			<td class="td_top">用户编码</td>
 			<td class="td_top">登陆密码</td>
+			<td class="td_top">角色</td>
 			<td class="td_top">姓名</td>
 			<td class="td_top">性别</td>
 			<td class="td_top">年龄</td>
@@ -71,6 +72,7 @@
 		<tr align="center">
 			<td class="td07">1</td>
 			<td class="td07">123456</td>
+			<td class="td07">管理员</td>
 			<td class="td07">文都苏</td>
 			<td class="td07">男</td>
 			<td class="td07">18</td>

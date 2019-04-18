@@ -21,33 +21,26 @@
 					</table></td>
 			</tr>
 		</table>
-		<form name="form1" method="post" action="">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/PatientinformationServlet?method=addPatientinformation&site=0">
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="90" height="24" class="td_form01">就诊卡号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
 					<td width="90" height="24" class="td_form01">患者姓名</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="piname" type="text"
 						class="input"></td>
-				</tr>
-				<tr>
 					<td width="90" height="24" class="td_form01">患者性别</td>
-					<td class="td_form02"><select name="select3">
+					<td class="td_form02"><select name="pisex">
 							<option>--请选择--</option>
 							<option>男</option>
 							<option>女</option>
 					</select></td>
-					<td width="90" height="24" class="td_form01">患者年龄</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
 				</tr>
 				<tr>
-					<td width="90" height="24" class="td_form01">手机号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					
+					<td width="90" height="24" class="td_form01">患者年龄</td>
+					<td class="td_form02"><input name="piage" type="text"
 						class="input"></td>
-					<td width="90" height="24" class="td_form01">居住地址</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td width="90" height="24" class="td_form01">手机号</td>
+					<td class="td_form02"><input name="piphonenumber" type="text"
 						class="input"></td>
 				</tr>
 			</table>
@@ -55,7 +48,7 @@
 				<table width="95%" border="0" align="center" cellpadding="0"
 					cellspacing="0">
 					<tr>
-						<td align="center"><input name=save type="button"
+						<td align="center"><input name=save type="submit"
 							class=buttonface value="提交"
 							onclick="location.href='#'">
 								<input name="Reset" type="button" class="buttonface" value="重置"

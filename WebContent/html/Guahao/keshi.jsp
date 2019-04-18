@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询科室信息</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript"
 	src="${pageContext.request.contextPath}/js/check.js"></script>
 <script language="javascript"
@@ -40,15 +41,18 @@
 		</tr>
 	</table>
 	<br>
-	<table width="95%" border="0" align="center" cellpadding="0"
+	<form action="${pageContext.request.contextPath}/BranchServlet?method=searchBranch&site=0" method="post">
+		<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
 			<td class="td_page">
-				科室编号： <input name="PARA_YM_NOW" size="10" type="text" class="input">
-				科室名称：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
+				科室编号： <input name="brid" size="10" type="text" class="input">
+				科室名称：<input name="brname" size="10" type="text" class="input">
 				<input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
 		</tr>
 	</table>
+	</form>
+	
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
@@ -56,28 +60,26 @@
 			<td class="td_top">科室编号</td>
 			<td class="td_top">科室名称</td>
 			<td class="td_top">科室地址</td>
-			<td class="td_top">科室简介</td>
 		</tr>
+		<c:forEach var="b" items="${blist }">
+			<tr>
+				<td class="td07">${b.brid }</td>
+				<td class="td07">${b.brname }</td>
+				<td class="td07">${b.brlocation }</td>
+			</tr>
+		</c:forEach>
+		
 		<tr>
-			<td class="td07">1103</td>
-			<td class="td07">妇科</td>
-			<td class="td07">天桥医院二楼201号</td>
-			<td class="td07">拥有多年临床经验</td>
-		</tr>
-		<tr>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-			<td class="td07">&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 		</tr>
 		<tr>
 			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+			<td class="td07">&nbsp;</td>
+		</tr>
+		<tr>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>

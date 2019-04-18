@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,15 +44,18 @@
 		</tr>
 	</table>
 	<br>
-	<table width="95%" border="0" align="center" cellpadding="0"
-		cellspacing="0">
+	<form action="${pageContext.request.contextPath}/RegisteredServlet?method=searchRegistered&site=0" method="post">
+		<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
-			<td class="td_page">就诊卡号： <input name="PARA_YM_NOW" size="10"
-				type="text" class="input"> 患者姓名：<input name="PARA_YM_NOW2"
-				size="10" type="text" class="input"> <input name="Submit"
-				type="submit" class="buttonface" value="查询 "></td>
+			<td class="td_page">
+				就诊卡号： <input name="piid" size="10" type="text" class="input"> 
+				患者姓名： <input name="piname" size="10" type="text" class="input"> 
+				<input name="Submit" type="submit" class="buttonface" value="查询 ">
+			</td>
 		</tr>
 	</table>
+	</form>
+	
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
@@ -63,16 +67,19 @@
 			<td nowrap class="td_top">操作</td>
 
 		</tr>
-		<tr>
-			<td class="td07">1103</td>
-			<td class="td07">朱佳宝</td>
-			<td class="td07">脑残科</td>
-			<td class="td07">2013-9-10</td>
-			<td class="td07"><a href="guahaoEdit.jsp" target="mainFrame">&nbsp;&nbsp;详情</a>
-				<a href="guahaoModify.jsp" target="mainFrame">&nbsp;&nbsp;修改</a> <a
-				href="tuihao.jsp" target="mainFrame">&nbsp;&nbsp;退号</a></td>
-
-		</tr>
+		
+		<c:forEach var="r" items="${rlist }">
+			<tr>
+				<td class="td07">${r.patientinformation.piid }</td>
+				<td class="td07">${r.patientinformation.piname }</td>
+				<td class="td07">${r.typeoftreatment.tyname }</td>
+				<td class="td07">${r.retime }</td>
+				<td class="td07"><a href="${pageContext.request.contextPath}/RegisteredServlet?method=findOneRegistered&site=0&reid=${r.reid}" target="mainFrame">&nbsp;&nbsp;详情</a>
+					<a href="${pageContext.request.contextPath}/RegisteredServlet?site=1&method=TypeBranchInfo&reid=${r.reid}" target="mainFrame">&nbsp;&nbsp;修改</a> <a
+					href="${pageContext.request.contextPath}/RegisteredServlet?method=deleteRegistered&site=0&reid=${r.reid}" target="mainFrame">&nbsp;&nbsp;退号</a>
+				</td>
+			</tr>
+		</c:forEach>
 		<tr>
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>

@@ -51,11 +51,10 @@
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
-			<td class="td_page">药品编号： <input id="drid" name="drid" size="20"
-				type="text" class="input"> 药品名称：<input id="drname"
-				name="drname" size="20" type="text" class="input"> <input
-				id="chaxun" name="chaxun" type="submit" class="buttonface"
-				value=" 查询 ">
+			<td class="td_page">
+				药品编号： <input id="drid" name="drid" size="20" type="text" class="input">
+				药品名称：<input id="drname" name="drname" size="20" type="text" class="input">
+				<input id="chaxun" name="chaxun" type="submit" class="buttonface" value=" 查询 ">
 			</td>
 		</tr>
 	</table>

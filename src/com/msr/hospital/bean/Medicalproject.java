@@ -1,11 +1,12 @@
 package com.msr.hospital.bean;
 
 public class Medicalproject {
-	private String mpid;
-	private String mpname;
-	private double mpprice;
+	private String mpid;//		医疗项目编号	mpid		varchar(32)primary key,
+	private String mpname;//	医疗项目名称	mpname		varchar(50),
+	private double mpprice;//	医疗项目价格	mpprice		double
 	public String getMpid() {
 		return mpid;
+		
 	}
 	public void setMpid(String mpid) {
 		this.mpid = mpid;

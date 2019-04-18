@@ -45,7 +45,7 @@
 
 			<td class="td_01"><img src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="doctorInfo.jsp" target="mainFrame" class="a14">医生信息查询</a></td>
+				href="${pageContext.request.contextPath}/DoctorsSevlet?method=findAllDoctors&site=0" target="mainFrame" class="a14">医生信息查询</a></td>
 		</tr>
 		<tr>
 
@@ -57,13 +57,13 @@
 
 			<td class="td_01"><img src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="keshi.jsp" target="mainFrame" class="a14">科室信息查询</a></td>
+				href="${pageContext.request.contextPath}/BranchServlet?method=findAllBranch&site=0" target="mainFrame" class="a14">科室信息查询</a></td>
 		</tr>
 		<tr>
 
 			<td class="td_01"><img src="${pageContext.request.contextPath}/images/arrow_01.gif"
 				width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a
-				href="yiliaoxiangmu.jsp" target="mainFrame" class="a14">医疗项目查询</a></td>
+				href="${pageContext.request.contextPath}/MedicalprojectSevlet?site=0&method=findAllmd" target="mainFrame" class="a14">医疗项目查询</a></td>
 		</tr>
 
 	</table>
