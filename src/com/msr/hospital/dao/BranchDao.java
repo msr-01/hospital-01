@@ -12,6 +12,8 @@ public interface BranchDao {
 	//根据brid查询科室信息
 	Branch findByBrid(String brid);
 	
+	//根据brname查询科室信息
+	List<Branch>  findByBrname(String brname) ;
 	//删除一条科室数据
 	void deleteBranch(String brid);
 		
@@ -20,4 +22,6 @@ public interface BranchDao {
 		
 	//根据传入的科室对象，修改数据库中科室数据
 	void modifyBranch(Branch branch);
+
+	
 }

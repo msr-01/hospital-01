@@ -19,7 +19,7 @@ public class BranchDaoImple implements BranchDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Branch> blist = new ArrayList<Branch>();
-		String sql = "select * from branch";
+		String sql = "select * from branch  ";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -54,6 +54,33 @@ public class BranchDaoImple implements BranchDao {
 				return branch;
 			}
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Branch>  findByBrname(String brname) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Branch> blist = new ArrayList<Branch>();
+		String sql = "select * from branch where brname =?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, brname);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Branch branch = new Branch(rs.getString("brid"), rs.getString("brname"), rs.getString("brlocation"));
+				  blist.add(branch);
+				
+			}
+			return blist;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
