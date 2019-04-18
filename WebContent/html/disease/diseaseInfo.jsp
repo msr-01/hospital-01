@@ -7,7 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>病历编号与信息</title>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"> </script>
+<script type="text/javascript">
+	$(function(){
+		$("#piid").focus();
+	});
+</script>
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -29,7 +34,7 @@
 				cellspacing="0">
 				<tr>
 					<td class="td_page">
-					就诊卡号：<input name="piid" size="10" type="text" class="input">
+					就诊卡号：<input name="piid" size="10" type="text" class="input" id="piid">
 					<input name="Submit" type="submit" class="buttonface" value="查询 "></td>
 				</tr>
 			</table>

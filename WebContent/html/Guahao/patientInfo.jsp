@@ -27,6 +27,13 @@
 		window.open(theURL, winName, parameter);
 	}
 </SCRIPT>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"> </script>
+<script type="text/javascript">
+	$(function(){
+		$("#piid").focus();
+	});
+</script>
+
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -48,7 +55,7 @@
 			cellspacing="0">
 			<tr>
 				<td class="td_page">
-					就诊卡号：<input name="piid" size="10" type="text" class="input"> 
+					就诊卡号：<input name="piid" size="10" type="text" class="input" id="piid"> 
 					患者姓名：<input name="piname" size="10" type="text" class="input"> 
 					患者手机号：<input name="piphonenumber" size="10" type="text" class="input"> 
 					<input name="Submit" type="submit" class="buttonface" value="查询 ">

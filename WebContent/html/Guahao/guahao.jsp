@@ -12,6 +12,7 @@
 	$(function(){
 		var d = new Date();
 		$("#time").val( d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+		$("#piid").focus();
 		
 		$("#branch").change(function(){
 			$.post("JSONSevlet",{tyid:$("#type").val(),brid:$("#branch").val(),method:1},function(data){
@@ -62,6 +63,21 @@
 			});
 		});
 	});
+	
+	function aaa(){
+		$.post("JSONSevlet",{piid:$("#piid").val(),method:4},function(data){
+			if(data == ''){
+				alert("不存在这个就诊卡号，请重新输入或申请新卡");
+			}else{
+				var pd = JSON.parse(data);	
+				$("#piname").val(pd.piname);	
+				$("#pisex").val(pd.pisex);	
+				$("#piage").val(pd.piage);
+			}
+				
+		});
+		return false;
+	}
 </script>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -84,7 +100,7 @@
 				<tr>
 					<td width="90" height="24" class="td_form01">就诊卡号</td>
 					<td width="400" class="td_form02">
-					<input name="piid" type="text" class="input" id="piid">
+					<input name="piid" type="text" class="input" id="piid" onkeydown='if(event.keyCode==13) return aaa();'>
 					<input name="button" type="button" class="buttonface" value="查询" id="search">
 						</td>
 					<td width="90" height="24" class="td_form01">患者姓名</td>
@@ -145,7 +161,7 @@
 				cellspacing="0">
 				<tr>
 					<td align="center"><input name=save type="submit"
-						class=buttonface value="提交" onclick="location.href='#'"> <input
+						class=buttonface value="提交" > <input
 						name="Reset" type="button" class="buttonface" value="重置"
 						onClick="location.href='#'"> <input name="Return"
 						type="button" class="buttonface" value="返回"

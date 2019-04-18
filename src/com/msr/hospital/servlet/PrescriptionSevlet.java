@@ -112,6 +112,7 @@ public class PrescriptionSevlet extends BaseServlet {
 		}
 	}
 	
+	
 	/**
 	 * 修改处方状态 state 变为1  付款时间设置成现在
 	 * @param req

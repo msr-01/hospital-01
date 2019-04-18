@@ -11,6 +11,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"> </script>
 <script type="text/javascript">
 	$(function(){
+		$("#piid").focus();
 		var d = new Date();
 		var count = 0;
 		$("#time").val( d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
@@ -73,7 +74,20 @@
 		});
 		
 	});
-
+function aaa(){
+	$.post("JSONSevlet",{piid:$("#piid").val(),method:4},function(data){
+		if(data == ''){
+			alert("不存在这个就诊卡号，请重新输入或申请新卡");
+		}else{
+			var pd = JSON.parse(data);	
+			$("#piname").val(pd.piname);	
+			$("#pisex").val(pd.pisex);	
+			$("#piage").val(pd.piage);
+		}
+			
+	});
+	return false;
+}
 </script>
 </head>
 
@@ -101,7 +115,7 @@
 
 					<td width="90" class="td_form01">就诊卡号</td>
 					<td class="td_form02">
-					<input name="piid" type="text" class="input" id="piid">
+					<input name="piid" type="text" class="input" id="piid" onkeydown='if(event.keyCode==13) return aaa();'>
 					<input name="textfield24" type="button" class="buttonface" value="查询" id="search">
 					</td>
 					<td width="90" class="td_form01">患者姓名</td>
