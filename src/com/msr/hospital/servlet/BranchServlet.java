@@ -1,6 +1,7 @@
 package com.msr.hospital.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -118,5 +119,76 @@ public class BranchServlet extends BaseServlet {
 		OperationType operationType = new OperationType(otid, "");
 		OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
 		ord.addOperationRecord(operationRecord);
+	}
+	
+	BranchDao BranchDao = new BranchDaoImpl();
+	/*
+	 * 鏌ョ湅绉戝淇℃伅
+	 */
+	
+		
+	public String branchFindAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String brid = req.getParameter("brid");
+		String brname = req.getParameter("brname");
+		
+		List<Branch> brlist = new ArrayList<Branch>();
+		
+		if(("".equals(brid)||brid==null)&&("".equals(brname)||brname==null)) {
+			 brlist = BranchDao.findAll();
+		}
+		
+		if(!"".equals(brid)&&brid!=null) {
+			Branch branch =BranchDao.findByBrid(brid);
+			brlist.add(branch);
+		}
+		if(!"".equals(brname)&&brname!=null) {
+			 brlist = BranchDao.findByBrname(brname);
+		}
+		
+		req.getSession().setAttribute("brlist", brlist);
+		
+		return "html/operationRoom/operationRoom.jsp";
+	}
+	
+
+	public String branchAddBranch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String brid = req.getParameter("brid");
+		String brname = req.getParameter("brname");
+		String brlocation = req.getParameter("brlocation");
+		Branch branch = new Branch(brid,brname,brlocation);
+		BranchDao.addBranch(branch);
+		System.out.println("branch:"+branch);
+		return "BranchServlet?method=branchFindAll";
+
+	}
+	
+	
+	public String branchDeleteBranch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String brid = req.getParameter("brid");
+		BranchDao.deleteBranch(brid);
+		return "BranchServlet?method=branchFindAll";
+	}
+	
+
+	public String branchModifyBranch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String brid = req.getParameter("brid");
+		String brname = req.getParameter("brname");
+		String brlocation = req.getParameter("brlocation");
+		Branch branch = new Branch(brid,brname,brlocation);
+		System.out.println("branch:"+branch);
+		BranchDao.modifyBranch(branch);
+		return "BranchServlet?method=branchFindAll";
+
+	}
+	
+	public String keshiModify(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String brid = req.getParameter("brid");
+		if(!"".equals(brid)&&brid!=null) {
+			Branch branch =BranchDao.findByBrid(brid);
+			req.getSession().setAttribute("branch", branch);
+		}
+		
+		return "/html/operationRoom/keshiModify.jsp";
 	}
 }

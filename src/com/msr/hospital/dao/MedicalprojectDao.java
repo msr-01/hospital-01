@@ -14,4 +14,19 @@ public interface MedicalprojectDao {
 	//根据医疗项目名称模糊查询医疗项目信息
 	List<Medicalproject> findByMpname(String mpname);
 	
+	
+	//查看所有医疗项目
+	List<Medicalproject> mpfindAll(String suffix);
+	
+	//根据id查询医疗项目
+	Medicalproject mpByid(String mpid);
+	
+	//删除医疗项目
+	void deleteMedicalproject(String mpid);
+		
+	//增加医疗项目
+	void addMedicalproject(Medicalproject medicalproject);
+		
+	//修改医疗项目
+	void modifyMedicalproject(Medicalproject medicalproject);
 }

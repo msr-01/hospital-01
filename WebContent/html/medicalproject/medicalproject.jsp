@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,17 +43,19 @@
 		</tr>
 	</table>
 	<br>
+	<form action="${pageContext.request.contextPath}/MedicalprojectServlet?method=MedicalprojectFinAll" method="post">
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
 			<td class="td_page">
-				医疗项目编号： <input name="PARA_YM_NOW" size="10" type="text" class="input">
-				医疗项目名称：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
+				医疗项目编号： <input name="mpid" size="10" type="text" class="input">
+				医疗项目名称：<input name="mpname" size="10" type="text" class="input">
 				<input name="Submit" type="submit" class="buttonface" value="查询 ">
-				<a href="addMedicalproject.jsp" target="mainFrame">&nbsp;&nbsp;添加医疗项目</a>
+				<a href="${pageContext.request.contextPath}/html/medicalproject/addMedicalproject.jsp" target="mainFrame">&nbsp;&nbsp;添加医疗项目</a>
 			</td>
 		</tr>
 	</table>
+	</form>
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
@@ -62,12 +65,18 @@
 			<td class="td_top">医疗项目价格</td>
 			<td class="td_top">操作</td>
 		</tr>
-		<tr>
-			<td class="td07">1001</td>
-			<td class="td07">心电图</td>
-			<td class="td07">200.00元/次</td>
-			<td class="td07"><a href="medicalprojectModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
-		</tr>
+		<c:forEach var="medicalproject" items="${mpList}">
+			<tr>
+				<td class="td07">${medicalproject.mpid}</td>
+				<td class="td07">${medicalproject.mpname}</td>
+				<td class="td07">${medicalproject.mpprice}元/次</td>
+				<td class="td07">
+				<a href="${pageContext.request.contextPath}/MedicalprojectServlet?method=modifyMedicalproject01&mpid=${medicalproject.mpid}">修改</a>&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath}/MedicalprojectServlet?method=deleteMedicalproject&mpid=${medicalproject.mpid}">删除</a>
+				</td>
+			</tr>
+		</c:forEach>
+		
 	</table>
 	<table width="95%" border="0" cellpadding="0" cellspacing="0"
 		class="table02" align="center">

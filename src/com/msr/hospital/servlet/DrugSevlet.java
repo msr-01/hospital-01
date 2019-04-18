@@ -141,4 +141,31 @@ public class DrugSevlet extends BaseServlet {
 	}
 	
 	
+	public String drugfindAll1(HttpServletRequest req, HttpServletResponse resp)  {
+		String drid = req.getParameter("drid");
+		String drname = req.getParameter("drname");
+		List<Drug> drList = new ArrayList<Drug>();
+		
+		DrugDao drugDao = new DrugDaoImpl();
+		System.out.println("=============DrugSevlet=================");
+		
+		if(!"".equals(drid) && drid!=null) {
+			Drug drug = drugDao.findByDrid(drid);
+			drList.add(drug);
+		}
+		
+		
+		if(!"".equals(drname) && drname!=null ) {
+			drList = drugDao.findbyDrname(drname);
+		}
+		
+		
+		if("".equals(drid) && "".equals(drname)) {
+			drList =  drugDao.findAll();
+		}
+		req.getSession().setAttribute("drList", drList);
+		
+		return "/html/Guahao/medicalInfo2.jsp"; 
+	}
+	
 }

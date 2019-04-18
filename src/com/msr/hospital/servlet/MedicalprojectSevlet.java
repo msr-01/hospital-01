@@ -1,6 +1,7 @@
 package com.msr.hospital.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,6 +37,7 @@ import com.msr.hospital.util.UUIDUtils;
  */
 @WebServlet("/MedicalprojectSevlet")
 public class MedicalprojectSevlet extends BaseServlet {
+	
 	
 	private OperationRecordDao ord = null;
 	private PatientinformationDao pd = null;
@@ -124,5 +126,62 @@ public class MedicalprojectSevlet extends BaseServlet {
 		OperationType operationType = new OperationType(otid, "");
 		OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
 		ord.addOperationRecord(operationRecord);
+	}
+	
+	MedicalprojectDao  medicalprojectDao = new MedicalprojectDaoImpl();
+	public String MedicalprojectFinAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Medicalproject> mpList = new ArrayList<Medicalproject>();
+		
+		
+		String mpid = request.getParameter("mpid");
+		String mpname = request.getParameter("mpname");
+		String suffix = "";
+		
+		if(!"".equals(mpid)&&mpid!=null) {
+			suffix = suffix + "and mpid = '"+mpid+"'"; 
+			mpList = medicalprojectDao.mpfindAll(suffix);
+		}
+		if(!"".equals(mpname)&&mpname!=null) {
+			suffix = suffix + "and mpname = '"+mpname+"'"; 
+			mpList = medicalprojectDao.mpfindAll(suffix);
+		}
+		mpList = medicalprojectDao.mpfindAll(suffix);
+		request.getSession().setAttribute("mpList", mpList);
+		
+		return "html/medicalproject/medicalproject.jsp";
+	}
+	
+	public String addMedicalproject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mpid = request.getParameter("mpid");
+		String mpname = request.getParameter("mpname");
+		double mpprice = Double.valueOf(request.getParameter("mpprice"));
+		Medicalproject medicalproject = new Medicalproject(mpid,mpname,mpprice);
+		
+		medicalprojectDao.addMedicalproject(medicalproject);
+		return "/MedicalprojectServlet?method=MedicalprojectFinAll";
+	}
+
+	public String modifyMedicalproject01(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mpid = request.getParameter("mpid");
+		Medicalproject medicalproject = medicalprojectDao.mpByid(mpid);
+		request.getSession().setAttribute("medicalproject", medicalproject);
+		return "html/medicalproject/medicalprojectModify.jsp";
+	}
+	
+
+	public String modifyMedicalproject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mpid = request.getParameter("mpid");
+		String mpname = request.getParameter("mpname");
+		double mpprice = Double.valueOf(request.getParameter("mpprice"));
+		Medicalproject medicalproject = new Medicalproject(mpid,mpname,mpprice);
+		
+		medicalprojectDao.modifyMedicalproject(medicalproject);
+		return "/MedicalprojectServlet?method=MedicalprojectFinAll";
+	}
+	
+	public String deleteMedicalproject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mpid = request.getParameter("mpid");
+		medicalprojectDao.deleteMedicalproject(mpid);
+		return "/MedicalprojectServlet?method=MedicalprojectFinAll";
 	}
 }

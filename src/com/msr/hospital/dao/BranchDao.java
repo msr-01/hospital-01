@@ -16,4 +16,14 @@ public interface BranchDao {
 	
 	//根据科室id模糊查询科室信息
 	List<Branch> findByBridM(String brid);
+	
+	
+	//删除科室信息
+	void deleteBranch(String brid);
+	
+	//增加科室信息
+	void addBranch(Branch branch);
+	
+	//修改科室信息
+	void modifyBranch(Branch branch);
 }

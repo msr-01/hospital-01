@@ -115,4 +115,81 @@ public class BranchDaoImpl implements BranchDao {
 		return blist;
 	}
 
+	@Override
+	public void deleteBranch(String brid) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "delete from Branch where brid = ?";
+		try {
+			conn = DBHelper.getConn();
+			ps = conn .prepareStatement(sql);
+			ps.setString(1, brid);
+			int num = ps.executeUpdate();
+			if(num!=0) {
+				System.out.println("科室信息删除成功");
+			}else {
+				System.out.println("科室信息删除失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
+	@Override
+	public void addBranch(Branch branch) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "insert into branch values (?,?,?)";
+		try {
+			conn = DBHelper.getConn();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, branch.getBrid());
+			ps.setString(2, branch.getBrname());
+			ps.setString(3, branch.getBrlocation());
+			
+			int num = ps.executeUpdate();
+			 
+			if(num!=0) {
+				System.out.println("科室信息增加成功");
+			}else {
+				System.out.println("科室信息增加失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
+	@Override
+	public void modifyBranch(Branch branch) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "update Branch set brname = ?, brlocation = ? where brid = ?";
+		try {
+			conn = DBHelper.getConn();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, branch.getBrname());
+			ps.setString(2, branch.getBrlocation());
+			ps.setString(3, branch.getBrid());
+			
+			int num = ps.executeUpdate();
+			if (num !=0) {
+				System.out.println("科室信息修改成功");
+			}else {
+				System.out.println("科室信息修改失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
 }

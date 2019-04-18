@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,35 +23,32 @@
 			</tr>
 		</table>
 		<br>
-		<form name="form1" method="post" action="">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/BranchServlet?method=branchModifyBranch">
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">科室编号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="brid" type="text"
+						class="input" value="${branch.brid}"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">科室名称</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="brname" type="text"
+						class="input" value="${branch.brname}"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">科室地点</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="brlocation" type="text"
+						class="input" value="${branch.brlocation}"></td>
 				</tr>
 			</table>
 			<br>
 				<table width="95%" border="0" align="center" cellpadding="0"
 					cellspacing="0">
 					<tr>
-						<td align="center"><input name=save type="button"
-							class=buttonface value="提交"
-							onclick="location.href='#'">
-								<input name="Reset" type="button" class="buttonface" value="重置"
-								onClick="location.href='#'"> <input
-									name="Return" type="button" class="buttonface" value="返回"
-									onClick="history.back(-1)"></td>
+						<td align="center">
+						<input name=save type="submit" class=buttonface value="提交" onclick="location.href='#'">
+						<input name="Reset" type="reset" class="buttonface" value="重置" onClick="location.href='#'"> 
+						<input name="Return" type="button" class="buttonface" value="返回" onClick="history.back(-1)"></td>
 					</tr>
 				</table>
 		</form>

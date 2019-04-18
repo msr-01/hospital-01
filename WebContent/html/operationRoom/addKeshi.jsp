@@ -22,21 +22,21 @@
 			</tr>
 		</table>
 		<br>
-		<form name="form1" method="post" action="">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/BranchServlet?method=branchAddBranch">
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">科室编号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="brid" type="text"
 						class="input"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">科室名称</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="brname" type="text"
 						class="input"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">科室地点</td>
-					<td class="td_form02"><input name="textfield24" type="text"
+					<td class="td_form02"><input name="brlocation" type="text"
 						class="input"></td>
 				</tr>
 			</table>
@@ -44,7 +44,7 @@
 				<table width="95%" border="0" align="center" cellpadding="0"
 					cellspacing="0">
 					<tr>
-						<td align="center"><input name=save type="button"
+						<td align="center"><input name=save type="submit"
 							class=buttonface value="提交"
 							onclick="location.href='#'">
 								<input name="Reset" type="button" class="buttonface" value="重置"

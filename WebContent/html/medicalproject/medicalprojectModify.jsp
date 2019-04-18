@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,22 +23,22 @@
 				</table></td>
 		</tr>
 	</table>
-	<form name="form1" method="post" action="">
+	<form name="form1" method="post" action="${pageContext.request.contextPath}/MedicalprojectServlet?method=modifyMedicalproject">
 			<table width="95%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="90" height="24" class="td_form01">医疗项目编号</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="mpid" type="text"
+						class="input" value="${medicalproject.mpid }"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">医疗项目名称</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="mpname" type="text"
+						class="input" value="${medicalproject.mpname }"></td>
 				</tr>
 				<tr>
 					<td width="90" height="24" class="td_form01">医疗项目价格</td>
-					<td class="td_form02"><input name="textfield24" type="text"
-						class="input"></td>
+					<td class="td_form02"><input name="mpprice" type="text"
+						class="input" value="${medicalproject.mpprice }"></td>
 				</tr>
 			</table>
 		<br>
@@ -45,8 +46,8 @@
 			cellspacing="0">
 			<tr>
 				<td align="center">
-					<input name=save type="button" class=buttonface value="提交" onclick="location.href='#'">
-					<input name="Reset" type="button" class="buttonface" value="重置" onClick="location.href='#'">
+					<input name=save type="submit" class=buttonface value="提交" onclick="location.href='#'">
+					<input name="Reset" type="reset" class="buttonface" value="重置" onClick="location.href='#'">
 					<input name="Return" type="button" class="buttonface" value="返回" onClick="history.back(-1)">
 				</td>
 			</tr>
