@@ -10,4 +10,13 @@ public interface OperationRecordDao {
 	//根据传进来的用户记录对象 在数据库用户记录表中存储一条操作记录数据
 	void addOperationRecord(OperationRecord operationRecord);
 	
+	//查询所有操作记录
+	List<OperationRecord> findAll();
+	
+	//根据工号查询操作记录
+	List<OperationRecord> findByJobnumber(String jobnumber);
+	
+	//根据姓名模糊查询操作记录
+	List<OperationRecord> findByUname(String uname);
+	
 }

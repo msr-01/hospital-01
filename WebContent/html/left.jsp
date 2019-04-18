@@ -104,7 +104,10 @@
 								class="a03">权限管理</a>
 							</li>
 							</c:if>
-							
+							<li><b class="tip"></b><a
+								href="${pageContext.request.contextPath}/OperationRecordServlet?method=findAllOR&site=0" target="mainFrame"
+								class="a03">操作记录</a>
+							</li>
 						</ul>
 					</div>
 				</c:if>

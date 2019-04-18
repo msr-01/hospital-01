@@ -11,6 +11,7 @@ import com.msr.hospital.bean.OperationRecord;
 import com.msr.hospital.bean.OperationType;
 import com.msr.hospital.bean.UserInfos;
 import com.msr.hospital.dao.OperationRecordDao;
+import com.msr.hospital.dao.UserInfosDao;
 import com.msr.hospital.util.DBHelper;
 
 public class OperationRecordDaoImpl implements OperationRecordDao {
@@ -21,6 +22,8 @@ public class OperationRecordDaoImpl implements OperationRecordDao {
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		
+		UserInfosDao ud = new UserInfosDaoImpl();
 		List<OperationRecord> oList = new ArrayList<OperationRecord>();
 		
 		try {
@@ -32,8 +35,7 @@ public class OperationRecordDaoImpl implements OperationRecordDao {
 				String orid = rs.getString("orid");	//varchar(32)
 				OperationType operationType = new OperationType(rs.getString("otid"), rs.getString("otname"));	//varchar(32)
 				String ortime = rs.getString("ortime");	//datetime
-				UserInfos userInfos = new UserInfos();	//varchar(32)
-				userInfos.setUid(uid);
+				UserInfos userInfos = ud.findByUid(uid);
 				OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
 				oList.add(operationRecord);
 			}
@@ -73,6 +75,104 @@ public class OperationRecordDaoImpl implements OperationRecordDao {
 			DBHelper.close(conn, ps, null);
 		}
 		
+	}
+
+	@Override
+	public List<OperationRecord> findAll() {
+		String sql = "select * from operationrecord opr , operationtype o where opr.otid = o.otid order by ortime desc";
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		UserInfosDao ud = new UserInfosDaoImpl();
+		
+		ResultSet rs = null;
+		List<OperationRecord> oList = new ArrayList<OperationRecord>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String orid = rs.getString("orid");	//varchar(32)
+				OperationType operationType = new OperationType(rs.getString("otid"), rs.getString("otname"));	//varchar(32)
+				String ortime = rs.getString("ortime");	//datetime
+				UserInfos userInfos = ud.findByUid(rs.getString("uid"));
+				OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
+				oList.add(operationRecord);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return oList;
+	}
+
+	@Override
+	public List<OperationRecord> findByJobnumber(String jobnumber) {
+		String sql = "select * from userinfos u,operationrecord opr , operationtype o where opr.otid = o.otid and u.uid=opr.uid and u.jobnumber = ? order by ortime desc";
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		UserInfosDao ud = new UserInfosDaoImpl();
+		
+		ResultSet rs = null;
+		List<OperationRecord> oList = new ArrayList<OperationRecord>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, jobnumber);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String orid = rs.getString("orid");	//varchar(32)
+				OperationType operationType = new OperationType(rs.getString("otid"), rs.getString("otname"));	//varchar(32)
+				String ortime = rs.getString("ortime");	//datetime
+				UserInfos userInfos = ud.findByUid(rs.getString("uid"));
+				OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
+				oList.add(operationRecord);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return oList;
+	}
+
+	@Override
+	public List<OperationRecord> findByUname(String uname) {
+		String sql = "select * from userinfos u,operationrecord opr , operationtype o where opr.otid = o.otid and u.uid=opr.uid and u.uname like ? order by ortime desc";
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		UserInfosDao ud = new UserInfosDaoImpl();
+		
+		ResultSet rs = null;
+		List<OperationRecord> oList = new ArrayList<OperationRecord>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+uname+"%");
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String orid = rs.getString("orid");	//varchar(32)
+				OperationType operationType = new OperationType(rs.getString("otid"), rs.getString("otname"));	//varchar(32)
+				String ortime = rs.getString("ortime");	//datetime
+				UserInfos userInfos = ud.findByUid(rs.getString("uid"));
+				OperationRecord operationRecord = new OperationRecord(orid, operationType, ortime, userInfos);
+				oList.add(operationRecord);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		
+		return oList;
 	}
 
 }

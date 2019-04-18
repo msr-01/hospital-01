@@ -97,8 +97,8 @@ public class UserInfosServlet extends BaseServlet {
 			UserInfos userInfos = new UserInfos(req.getParameter("uid"), characte, req.getParameter("upassword"), req.getParameter("uname"), req.getParameter("ujobtitle"), Integer.parseInt(req.getParameter("uage")), req.getParameter("usex"), req.getParameter("uphonenumber"), Integer.parseInt(req.getParameter("ustatus")), req.getParameter("uemail"), req.getParameter("udescription"), req.getParameter("jobnumber"), null);
 			
 			ud.modifyUserInfos(userInfos);
-			//2代表修改用户信息
-			addRecord("2", req, resp);
+			//4代表修改用户信息
+			addRecord("4", req, resp);
 			return "UserInfosServlet?method=findAllUser&site=0";
 		default:
 			return "index.jsp";
