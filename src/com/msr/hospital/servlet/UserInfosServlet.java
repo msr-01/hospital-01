@@ -12,12 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.msr.hospital.bean.Characte;
 import com.msr.hospital.bean.OperationRecord;
 import com.msr.hospital.bean.OperationType;
+import com.msr.hospital.bean.Permission;
 import com.msr.hospital.bean.UserInfos;
 import com.msr.hospital.dao.CharacteDao;
 import com.msr.hospital.dao.OperationRecordDao;
+import com.msr.hospital.dao.PermissionDao;
 import com.msr.hospital.dao.UserInfosDao;
 import com.msr.hospital.dao.impl.CharacteDaoImpl;
 import com.msr.hospital.dao.impl.OperationRecordDaoImpl;
+import com.msr.hospital.dao.impl.PermissionDaoImpl;
 import com.msr.hospital.dao.impl.UserInfosDaoImpl;
 import com.msr.hospital.util.TimeUtil;
 import com.msr.hospital.util.UUIDUtils;
@@ -30,6 +33,7 @@ public class UserInfosServlet extends BaseServlet {
 	private UserInfosDao  ud = null;
 	private CharacteDao cd = null;
 	private OperationRecordDao ord = null;
+	private PermissionDao psd = null;
 	
 	/**
 	 * 初始化 私有变量接口
@@ -39,6 +43,7 @@ public class UserInfosServlet extends BaseServlet {
 		ud = new UserInfosDaoImpl();
 		cd = new CharacteDaoImpl();
 		ord = new OperationRecordDaoImpl();
+		psd = new PermissionDaoImpl();
 	}
 	/**
 	 * 传入UID 生成UserInfos 存入Session中 跳转页面
@@ -50,8 +55,9 @@ public class UserInfosServlet extends BaseServlet {
 		int site = Integer.parseInt(req.getParameter("site"));
 		String uid = req.getParameter("uid");
 		UserInfos userInfos = ud.findByUid(uid);
+		List<Permission> pslist = psd.findAllPermission();
 		req.getSession().setAttribute("userInfos", userInfos);
-		
+		req.getSession().setAttribute("pslist", pslist);
 		//添加操作记录
 		addRecord("4",req,resp);
 		

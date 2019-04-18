@@ -10,6 +10,7 @@ import java.util.List;
 import com.msr.hospital.bean.Characte;
 import com.msr.hospital.bean.OperationRecord;
 import com.msr.hospital.bean.RoleName;
+import com.msr.hospital.bean.Rolepermissions;
 import com.msr.hospital.bean.UserInfos;
 import com.msr.hospital.dao.OperationRecordDao;
 import com.msr.hospital.dao.UserInfosDao;
@@ -101,7 +102,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from userinfos u , characte c , rolename r  where u.uid = ? and u.cid = c.cid and c.rid = r.rid";
+		String sql = "select * from userinfos u , characte c , rolename r ,rolepermissions rm where u.uid = ? and u.cid = c.cid and c.cid=rm.cid and c.rid = r.rid";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -124,7 +125,9 @@ public class UserInfosDaoImpl implements UserInfosDao {
 				String rid = rs.getString("rid");
 				String rname = rs.getString("rname");
 				RoleName roleName = new RoleName(rid, rname);
-				Characte characte = new Characte(cid, roleName, cdescription);
+				
+				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
+				Characte characte = new Characte(cid, roleName, cdescription, rolepermissions);
 				List<OperationRecord> oList = ord.findByUid(uid);
 				
 				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
@@ -226,7 +229,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from userinfos u , characte c , rolename r  where u.jobnumber = ? and u.cid = c.cid and c.rid = r.rid";
+		String sql = "select * from userinfos u , characte c , rolename r ,rolepermissions rm where u.jobnumber = ? and u.cid = c.cid and c.cid=rm.cid and c.rid = r.rid";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -249,7 +252,9 @@ public class UserInfosDaoImpl implements UserInfosDao {
 				String rid = rs.getString("rid");
 				String rname = rs.getString("rname");
 				RoleName roleName = new RoleName(rid, rname);
-				Characte characte = new Characte(cid, roleName, cdescription);
+				
+				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
+				Characte characte = new Characte(cid, roleName, cdescription, rolepermissions);
 				List<OperationRecord> oList = ord.findByUid(uid);
 				
 				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);

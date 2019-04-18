@@ -4,6 +4,10 @@ public class Characte {
 	private String cid;	//varchar(32)
 	private RoleName roleName;	//varchar(32)
 	private String cdescription;	//varchar(500)
+	private Rolepermissions rolepermissions;
+	
+	
+	
 	public String getCid() {
 		return cid;
 	}
@@ -22,6 +26,17 @@ public class Characte {
 	public void setCdescription(String cdescription) {
 		this.cdescription = cdescription;
 	}
+	
+	
+	
+	public Rolepermissions getRolepermissions() {
+		return rolepermissions;
+	}
+	
+	
+	public void setRolepermissions(Rolepermissions rolepermissions) {
+		this.rolepermissions = rolepermissions;
+	}
 	public Characte(String cid, RoleName roleName, String cdescription) {
 		super();
 		this.cid = cid;
@@ -30,8 +45,15 @@ public class Characte {
 	}
 	public Characte() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	public Characte(String cid, RoleName roleName, String cdescription, Rolepermissions rolepermissions) {
+		super();
+		this.cid = cid;
+		this.roleName = roleName;
+		this.cdescription = cdescription;
+		this.rolepermissions = rolepermissions;
+	}
+	
 	
 	
 	
