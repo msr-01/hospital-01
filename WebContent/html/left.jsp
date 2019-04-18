@@ -70,8 +70,12 @@
 							href="medicalproject/medicalproject.jsp" target="mainFrame"
 							class="a03">医疗项目管理</a></li>
 						<li><b class="tip"></b><a
-							href="Popedom/popedomAttribute.jsp" target="mainFrame"
+							href="Popedom/popedom.jsp" target="mainFrame"
 							class="a03">权限管理</a>
+						</li>
+						<li><b class="tip"></b><a
+							href="OperationRecord/operationRecord.jsp" target="mainFrame"
+							class="a03">操作记录</a>
 						</li>
 					</ul>
 				</div>

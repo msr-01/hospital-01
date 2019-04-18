@@ -73,6 +73,15 @@
 						<option>失踪</option>
 				</select></td>
 			</tr>
+			<tr>
+				<td width="90" height="24" class="td_form01">角色</td>
+				<td class="td_form02"><select name="select3">
+						<option>--请选择--</option>
+						<option>前台</option>
+						<option>医生</option>
+						<option>管理员</option>
+				</select></td>
+			</tr>
 		</table>
 		<br>
 		<table width="95%" border="0" align="center" cellpadding="0"
