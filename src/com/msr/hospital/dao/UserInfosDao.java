@@ -22,4 +22,7 @@ public interface UserInfosDao {
 	
 	//根据工号查询用户数据
 	UserInfos findByjobnumber(String jobnumber);
+	
+	//根据姓名模糊查找用户
+	List<UserInfos> findByUname(String uname);
 }

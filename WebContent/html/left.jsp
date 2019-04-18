@@ -75,7 +75,7 @@
 						<a class="one">系统管理</a>
 						<ul class="kid">
 							<c:if test="${fn:contains(userInfos.characte.rolepermissions.popedom , 'g' )}">
-								<li><b class="tip"></b><a href="User/users.jsp"
+								<li><b class="tip"></b><a href="${pageContext.request.contextPath}/UserInfosServlet?method=findAllUser&site=0"
 								target="mainFrame" class="a03">用户管理</a></li>
 							</c:if>
 							<c:if test="${fn:contains(userInfos.characte.rolepermissions.popedom , 'h' )}">
@@ -100,7 +100,7 @@
 							</c:if>
 							<c:if test="${fn:contains(userInfos.characte.rolepermissions.popedom , 'i' )}">
 								<li><b class="tip"></b><a
-								href="Popedom/popedomAttribute.jsp" target="mainFrame"
+								href="Popedom/popedom.jsp" target="mainFrame"
 								class="a03">权限管理</a>
 							</li>
 							</c:if>

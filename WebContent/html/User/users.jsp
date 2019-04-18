@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,22 +43,25 @@
 		</tr>
 	</table>
 	<br>
+	<form action="${pageContext.request.contextPath}/UserInfosServlet?method=search&site=0" method="post">
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
 			<td class="td_page">
-				用户姓名：<input name="PARA_YM_NOW" size="10" type="text" class="input">
-				用户编码：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
+				用户姓名：<input name=uname size="10" type="text" class="input">
+				工号：<input name="jobnumber" size="10" type="text" class="input">
 				<input name="Submit" type="submit" class="buttonface" value="查询 ">
-				<a href="addUser.jsp" target="mainFrame">&nbsp;&nbsp;添加用户信息</a>
+				<a href="${pageContext.request.contextPath}/html/User/addUser.jsp" target="mainFrame">&nbsp;&nbsp;添加用户信息</a>
 			</td>
 		</tr>
 	</table>
+	</form>
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
 		<tr align="center">
 			<td class="td_top">用户编码</td>
 			<td class="td_top">登陆密码</td>
+			<td class="td_top">角色</td>
 			<td class="td_top">姓名</td>
 			<td class="td_top">性别</td>
 			<td class="td_top">年龄</td>
@@ -68,19 +72,24 @@
 			<td class="td_top">状态</td>
 			<td class="td_top">操作</td>
 		</tr>
-		<tr align="center">
-			<td class="td07">1</td>
-			<td class="td07">123456</td>
-			<td class="td07">文都苏</td>
-			<td class="td07">男</td>
-			<td class="td07">18</td>
-			<td class="td07">1</td>
-			<td class="td07">院长</td>
-			<td class="td07">07032132121</td>
-			<td class="td07">23121231@2123</td>
-			<td class="td07">在职</td>
-			<td class="td07"><a href="userModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
-		</tr>
+		
+		<c:forEach var="u" items="${ulist }">
+			<tr align="center">
+				<td class="td07">${u.uid }</td>
+				<td class="td07">${u.upassword }</td>
+				<td class="td07">${u.characte.roleName.rname }</td>
+				<td class="td07">${u.uname }</td>
+				<td class="td07">${u.usex }</td>
+				<td class="td07">${u.uage }</td>
+				<td class="td07">${u.jobnumber }</td>
+				<td class="td07">${u.ujobtitle }</td>
+				<td class="td07">${u.uphonenumber }</td>
+				<td class="td07">${u.uemail }</td>
+				<td class="td07">${u.ustatus }</td>
+				<td class="td07"><a href="${pageContext.request.contextPath}/UserInfosServlet?method=modifyUser&site=0&uid=${u.uid}">修改</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/UserInfosServlet?method=deleteUserInfosByUid&site=0&uid=${u.uid}">删除</a></td>
+			</tr>
+		</c:forEach>
+		
 	</table>
 	<table width="95%" border="0" cellpadding="0" cellspacing="0"
 		class="table02" align="center">

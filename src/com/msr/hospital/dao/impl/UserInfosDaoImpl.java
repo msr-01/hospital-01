@@ -145,15 +145,16 @@ public class UserInfosDaoImpl implements UserInfosDao {
 
 	@Override
 	public List<UserInfos> findAll() {
-		String sql = "select * from userinfos u , characte c , rolename r  where u.cid = c.cid and c.rid = r.rid";
-		List<UserInfos> uList = new ArrayList<UserInfos>();
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		OperationRecordDao ord = new OperationRecordDaoImpl();
+		String sql = "select * from userinfos u , characte c , rolename r ,rolepermissions rm where  u.cid = c.cid and c.cid=rm.cid and c.rid = r.rid";
+		List<UserInfos> ulist = new ArrayList<UserInfos>();
+		
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
+			OperationRecordDao ord = new OperationRecordDaoImpl();
 			while(rs.next()) {
 				String uid = rs.getString("uid");
 				String cid = rs.getString("cid"); //(32)
@@ -166,16 +167,17 @@ public class UserInfosDaoImpl implements UserInfosDao {
 				int ustatus = rs.getInt("ustatus");	 //int(11)
 				String uemail = rs.getString("uemail");	//varchar(100)
 				String udescription = rs.getString("udescription");	//varchar(500)
-				String jobnumber = rs.getString("jobnumber");
 				String cdescription = rs.getString("cdescription");
 				String rid = rs.getString("rid");
 				String rname = rs.getString("rname");
 				RoleName roleName = new RoleName(rid, rname);
-				Characte characte = new Characte(cid, roleName, cdescription);
+				
+				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
+				Characte characte = new Characte(cid, roleName, cdescription, rolepermissions);
 				List<OperationRecord> oList = ord.findByUid(uid);
 				
-				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
-				uList.add(userInfos);
+				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, rs.getString("jobnumber"), oList);
+				ulist.add(userInfos);
 			}
 			
 		} catch (SQLException e) {
@@ -184,7 +186,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 		}finally {
 			DBHelper.close(conn, ps, rs);
 		}
-		return uList;
+		return ulist;
 	}
 
 	@Override
@@ -268,6 +270,52 @@ public class UserInfosDaoImpl implements UserInfosDao {
 			DBHelper.close(conn, ps, rs);
 		}
 		return null;
+	}
+
+	@Override
+	public List<UserInfos> findByUname(String uname) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from userinfos u , characte c , rolename r ,rolepermissions rm where  u.cid = c.cid and c.cid=rm.cid and c.rid = r.rid and uname like  ?";
+		List<UserInfos> ulist = new ArrayList<UserInfos>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+uname+"%");
+			rs = ps.executeQuery();
+			OperationRecordDao ord = new OperationRecordDaoImpl();
+			while(rs.next()) {
+				String uid = rs.getString("uid");
+				String cid = rs.getString("cid"); //(32)
+				String upassword= rs.getString("upassword");	//varchar(50)
+				String ujobtitle = rs.getString("ujobtitle");	//varchar(50)
+				int  uage = rs.getInt("uage");	//int(11)
+				String usex = rs.getString("usex");	//char(2)
+				String uphonenumber = rs.getString("uphonenumber");	//varchar(50)
+				int ustatus = rs.getInt("ustatus");	 //int(11)
+				String uemail = rs.getString("uemail");	//varchar(100)
+				String udescription = rs.getString("udescription");	//varchar(500)
+				String cdescription = rs.getString("cdescription");
+				String rid = rs.getString("rid");
+				String rname = rs.getString("rname");
+				RoleName roleName = new RoleName(rid, rname);
+				
+				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
+				Characte characte = new Characte(cid, roleName, cdescription, rolepermissions);
+				List<OperationRecord> oList = ord.findByUid(uid);
+				
+				UserInfos userInfos = new UserInfos(uid, characte, upassword, rs.getString("uname"), ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, rs.getString("jobnumber"), oList);
+				ulist.add(userInfos);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, rs);
+		}
+		return ulist;
 	}
 	
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.msr.hospital.bean.Characte;
 import com.msr.hospital.bean.RoleName;
+import com.msr.hospital.bean.Rolepermissions;
 import com.msr.hospital.dao.CharacteDao;
 import com.msr.hospital.util.DBHelper;
 
@@ -18,7 +19,7 @@ public class CharacteDaoImpl implements CharacteDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from characte c , rolename r where cid = ? and r.cid = c.cid";
+		String sql = "select * from characte c , rolename r,rolepermissions rm where c.cid = ? and r.rid = c.rid and rm.cid = c.cid";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -29,7 +30,8 @@ public class CharacteDaoImpl implements CharacteDao {
 				RoleName roleName = new RoleName(cid, rname) ;	//varchar(32)
 				String cdescription = rs.getString("cdescription");	//varchar(500)
 				
-				return new Characte(cid, roleName, cdescription);
+				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
+				return new Characte(cid, roleName, cdescription, rolepermissions);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

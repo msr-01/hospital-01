@@ -1,6 +1,7 @@
 package com.msr.hospital.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -45,52 +46,9 @@ public class UserInfosServlet extends BaseServlet {
 		ord = new OperationRecordDaoImpl();
 		psd = new PermissionDaoImpl();
 	}
-	/**
-	 * 传入UID 生成UserInfos 存入Session中 跳转页面
-	 * @param req
-	 * @param resp
-	 * @return
-	 */
-	public String getUserInfosByUid(HttpServletRequest req , HttpServletResponse resp) {
-		int site = Integer.parseInt(req.getParameter("site"));
-		String uid = req.getParameter("uid");
-		UserInfos userInfos = ud.findByUid(uid);
-		List<Permission> pslist = psd.findAllPermission();
-		req.getSession().setAttribute("userInfos", userInfos);
-		req.getSession().setAttribute("pslist", pslist);
-		//添加操作记录
-		addRecord("4",req,resp);
-		
-		//跳转页面选择
-		switch (site) {
-		case 0:
-			return "test.jsp";
-		default:
-			return "index.jsp";
-		}
-		
-	}
 	
 	
-	/**
-	 * 获取所有UserInfos信息  返回uList集合 存入 req中转发
-	 * @param req
-	 * @param resp
-	 * @return
-	 */
-	public String getUserInfosAll(HttpServletRequest req , HttpServletResponse resp) {
-		int site = Integer.parseInt(req.getParameter("site"));
-		List<UserInfos> uList = ud.findAll();
-		req.setAttribute("uList", uList);
-		
-		addRecord("4", req, resp);
-		switch (site) {
-		case 0:
-			return "test.jsp";
-		default:
-			return "index.jsp";
-		}
-	}
+	
 	
 	/**
 	 * 根据传入的uid 删除对应的UserInfos
@@ -104,48 +62,44 @@ public class UserInfosServlet extends BaseServlet {
 		String uid = req.getParameter("uid");
 		ud.deleteUserInfos(uid);
 		
-		
+		//3代表删除用户信息
 		addRecord("3", req, resp);
 		switch (site) {
 		case 0:
-			return "UserInfosServlet?method=getUserInfosAll&site=0";
+			return "UserInfosServlet?method=findAllUser&site=0";
 		default:
 			return "index.jsp";
 		}
 	}
 	
 	/**
-	 * 根据传入的参数增加一个UserInfos
+	 * 修改用户信息
 	 * @param req
 	 * @param resp
 	 * @return
 	 */
 	
-	public String addUserInfos(HttpServletRequest req , HttpServletResponse resp) {
+	public String modifyUser(HttpServletRequest req , HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
-		String uid = UUIDUtils.getId();
-		String cid = req.getParameter("cid"); //(32)
-		String upassword = req.getParameter("upassword");	//varchar(50)
-		String uname = req.getParameter("uname");	//varchar(50)
-		String ujobtitle = req.getParameter("ujobtitle");	//varchar(50)
-		int  uage = Integer.parseInt(req.getParameter("uage"));	//int(11)
-		String usex = req.getParameter("usex");	//char(2)
-		String uphonenumber = req.getParameter("uphonenumber");	//varchar(50)
-		int ustatus = Integer.parseInt(req.getParameter("ustatus"));	 //int(11)
-		String uemail = req.getParameter("uemail");	//varchar(100)
-		String udescription = req.getParameter("udescription");	//varchar(500)
-		String jobnumber = req.getParameter("jobnumber");
-		
-		Characte characte = cd.findByCid(cid); 
-		List<OperationRecord> oList = ord.findByUid(uid);
-		UserInfos userinfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
-		ud.addUserInfos(userinfos);
 		
 		
-		addRecord("1", req, resp);
+
 		switch (site) {
 		case 0:
-			return "UserInfosServlet?method=getUserInfosAll&site=0";
+			UserInfos userinfos = ud.findByUid(req.getParameter("uid"));
+			req.setAttribute("userinfos", userinfos);
+			
+			return "html/User/userModify.jsp";
+		case 1:
+			
+			Characte characte = cd.findByCid(req.getParameter("cid"));
+			
+			UserInfos userInfos = new UserInfos(req.getParameter("uid"), characte, req.getParameter("upassword"), req.getParameter("uname"), req.getParameter("ujobtitle"), Integer.parseInt(req.getParameter("uage")), req.getParameter("usex"), req.getParameter("uphonenumber"), Integer.parseInt(req.getParameter("ustatus")), req.getParameter("uemail"), req.getParameter("udescription"), req.getParameter("jobnumber"), null);
+			
+			ud.modifyUserInfos(userInfos);
+			//2代表修改用户信息
+			addRecord("2", req, resp);
+			return "UserInfosServlet?method=findAllUser&site=0";
 		default:
 			return "index.jsp";
 		}
@@ -194,6 +148,90 @@ public class UserInfosServlet extends BaseServlet {
 		System.out.println("退出登录成功");
 		return "/html/login.jsp";
 	}
+	
+	/**
+	 * 查询所有的用户记录 并返回
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	
+	public String findAllUser(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		List<UserInfos> ulist = ud.findAll();
+		req.setAttribute("ulist", ulist);
+		
+		
+		//1代表查询用户信息
+		addRecord("1", req, resp);
+		switch (site) {
+		case 0:
+			return "/html/User/users.jsp";
+		default:
+			return "index.jsp";
+		}
+	}
+	
+	/**
+	 * 添加一条用户信息记录
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	public String addUser(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		
+		
+		
+		Characte characte = cd.findByCid(req.getParameter("cid"));
+		String uid = UUIDUtils.getId();
+		UserInfos userInfos = new UserInfos(uid, characte, req.getParameter("upassword"), req.getParameter("uname"), req.getParameter("ujobtitle"), Integer.parseInt(req.getParameter("uage")), req.getParameter("usex"), req.getParameter("uphonenumber"), Integer.parseInt(req.getParameter("ustatus")), req.getParameter("uemail"), req.getParameter("udescription"), req.getParameter("jobnumber"), null);
+		
+		ud.addUserInfos(userInfos);
+		
+		
+		//2代表添加用户信息
+		addRecord("2", req, resp);
+		switch (site) {
+		case 0:
+			return "/html/User/users.jsp";
+		default:
+			return "index.jsp";
+		}
+	}
+	
+	public String search(HttpServletRequest req , HttpServletResponse resp) {
+		int site = Integer.parseInt(req.getParameter("site"));
+		
+		String uname = req.getParameter("uname");
+		String jobnumber = req.getParameter("jobnumber");
+		
+		if((uname==null|| uname.equals(""))&&(jobnumber==null || jobnumber.equals(""))) {
+			site = 1;
+		}else if(uname==null|| uname.equals("")) {
+			List<UserInfos> ulist = new ArrayList<UserInfos>();
+			UserInfos user = ud.findByjobnumber(jobnumber);
+			ulist.add(user);
+			req.setAttribute("ulist", ulist);
+			
+		}else if(jobnumber==null || jobnumber.equals("")) {
+			List<UserInfos> ulist = ud.findByUname(uname);
+			req.setAttribute("ulist", ulist);
+		}
+		
+		
+		//1代表查询用户信息
+		addRecord("1", req, resp);
+		switch (site) {
+		case 0:
+			return "/html/User/users.jsp";
+		case 1:
+			return "UserInfosServlet?method=findAllUser&site=0";
+		default:
+			return "index.jsp";
+		}
+	}
+	
 	
 	/**
 	 * 增加操作记录
