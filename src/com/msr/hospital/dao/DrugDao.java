@@ -11,4 +11,11 @@ public interface DrugDao {
 	Drug findByDrid(String drid);
 	//根据药品名模糊查询药品，返回药品集合
 	List<Drug> findbyDrname(String drname);
+	
+	//添加药品
+	void addDrug(Drug drug);
+	//修改药品
+	void modifyDrug(Drug drug);
+	//删除药品
+	void deleteByDrid(String drid);
 }

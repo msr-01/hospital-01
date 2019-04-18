@@ -22,38 +22,38 @@
 				</table></td>
 		</tr>
 	</table>
-	<form name="form1" method="post" action="">
+	<form name="form1" action="${pageContext.request.contextPath}/DrugSevlet?method=addDrug" method="post">
 		<table width="95%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="90" height="24" class="td_form01">药品编号</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drid" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">药品名称</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drname" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">药品规格</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drformat" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">药品单价</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drunitprice" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">药品功能</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drfunction" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">生产厂家</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drmanufacturer" type="text"
 					class="input"></td>
 			</tr>
 			<tr>
 				<td width="90" height="24" class="td_form01">有效期</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="dreffectiveperiod" type="text"
 					class="input"></td>
 				<td width="90" height="24" class="td_form01">库存</td>
-				<td class="td_form02"><input name="textfield24" type="text"
+				<td class="td_form02"><input name="drinstock" type="text"
 					class="input"></td>
 			</tr>
 		</table>
@@ -62,8 +62,8 @@
 			cellspacing="0">
 			<tr>
 				<td align="center">
-					<input name=save type="button" class=buttonface value="提交" onclick="location.href='#'">
-					<input name="Reset" type="button" class="buttonface" value="重置" onClick="location.href='#'">
+					<input name=save type="submit" class=buttonface value="提交">
+					<input name="Reset" type="reset" class="buttonface" value="重置">
 					<input name="Return" type="button" class="buttonface" value="返回" onClick="history.back(-1)">
 				</td>
 			</tr>

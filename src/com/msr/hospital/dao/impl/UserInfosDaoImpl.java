@@ -241,11 +241,11 @@ public class UserInfosDaoImpl implements UserInfosDao {
 				String rname = rs.getString("rname");
 				RoleName roleName = new RoleName(rid, rname);
 				
+				
 				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
 				Characte characte = new Characte(cid, roleName, cdescription, rolepermissions);
-				List<OperationRecord> oList = ord.findByUid(uid);
-				
-				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, oList);
+
+				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, null);
 				return userInfos;
 			}
 			
