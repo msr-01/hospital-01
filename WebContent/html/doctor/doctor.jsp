@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,17 +43,19 @@
 		</tr>
 	</table>
 	<br>
+	<form action="${pageContext.request.contextPath}/DoctorsSevlet?method=searchdoctors&site=0" method="post">
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
 			<td class="td_page">
-				医生工号： <input name="PARA_YM_NOW" size="10" type="text" class="input">
-				医生姓名：<input name="PARA_YM_NOW2" size="10" type="text" class="input">
+				医生工号： <input name="jobnumber" size="10" type="text" class="input">
+				医生姓名：<input name="uname" size="10" type="text" class="input">
 				<input name="Submit" type="submit" class="buttonface" value=" 查询 ">
-				<a href="addDoctor.jsp" target="mainFrame">&nbsp;&nbsp;添加医生信息</a>
+				<a href="${pageContext.request.contextPath}/DoctorsSevlet?method=findinfomation&site=0" target="mainFrame">&nbsp;&nbsp;添加医生信息</a>
 			</td>
 		</tr>
 	</table>
+	</form>
 	<br>
 	<table width="95%" border="0" align="center" cellpadding="0"
 		cellspacing="0" class="table01">
@@ -68,18 +71,23 @@
 			<td class="td_top">状态</td>
 			<td class="td_top">操作</td>
 		</tr>
-		<tr align="center">
-			<td class="td07">1</td>
-			<td class="td07">院长</td>
-			<td class="td07">文都苏</td>
-			<td class="td07">男</td>
-			<td class="td07">18</td>
-			<td class="td07">妇科</td>
-			<td class="td07">专家</td>
-			<td class="td07">110</td>
-			<td class="td07">在诊</td>
-			<td class="td07"><a href="doctorModify.jsp">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
-		</tr>
+		
+		<c:forEach var="d" items="${dList }">
+			<tr align="center">
+				<td class="td07">${d.userInfos.jobnumber }</td>
+				<td class="td07">${d.doctortitle.dtname }</td>
+				<td class="td07">${d.userInfos.uname }</td>
+				<td class="td07">${d.userInfos.usex }</td>
+				<td class="td07">${d.userInfos.uage }</td>
+				<td class="td07">${d.branch.brname }</td>
+				<td class="td07">${d.typeoftreatment.tyname }</td>
+				<td class="td07">${d.userInfos.uphonenumber }</td>
+				<td class="td07">${d.userInfos.ustatus }</td>
+				<td class="td07">
+					<a href="${pageContext.request.contextPath}/DoctorsSevlet?method=modifyDoctors&site=0&jobnumber=${d.userInfos.jobnumber }">修改</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/DoctorsSevlet?method=deleteDoctors&site=0&doid=${d.doid }">删除</a></td>
+			</tr>
+		</c:forEach>
+		
 		<tr align="center">
 			<td class="td07">&nbsp;</td>
 			<td class="td07">&nbsp;</td>

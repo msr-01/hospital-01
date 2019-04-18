@@ -5,6 +5,7 @@ public class Typeoftreatment {
 	private String tyname;
 	public String getTyid() {
 		return tyid;
+		
 	}
 	public void setTyid(String tyid) {
 		this.tyid = tyid;

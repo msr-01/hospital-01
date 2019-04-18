@@ -80,7 +80,7 @@
 							</c:if>
 							<c:if test="${fn:contains(userInfos.characte.rolepermissions.popedom , 'h' )}">
 								<li><b class="tip"></b><a
-								href="doctor/doctor.jsp" target="mainFrame"
+								href="${pageContext.request.contextPath}/DoctorsSevlet?method=findAllDoctors&site=1" target="mainFrame"
 								class="a03">医生管理</a></li>
 							</c:if>
 							<c:if test="${fn:contains(userInfos.characte.rolepermissions.popedom , 'i' )}">

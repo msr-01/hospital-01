@@ -245,4 +245,100 @@ public class DoctorsDaoImpl implements DoctorsDao {
 		return dlist;
 	}
 
+	@Override
+	public void addDoctor(Doctors doctor) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		
+		String sql = "insert into doctors set doid = ? , brid = ? , dtid = ? , uid = ? , tyid = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, doctor.getDoid());
+			ps.setString(2, doctor.getBranch().getBrid());
+			ps.setString(3, doctor.getDoctortitle().getDtid());
+			ps.setString(4, doctor.getUserInfos().getUid());
+			ps.setString(5, doctor.getTypeoftreatment().getTyid());
+			rs = ps.executeUpdate();
+			
+			if(rs > 0) {
+				System.out.println("doctor添加成功");
+			}else {
+				System.out.println("doctor添加失败");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
+	@Override
+	public void modifyDoctors(Doctors doctors) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		
+		String sql = "update  doctors set  brid = ? , dtid = ? , uid = ? , tyid = ? where doid = ? ";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(5, doctors.getDoid());
+			ps.setString(1, doctors.getBranch().getBrid());
+			ps.setString(2, doctors.getDoctortitle().getDtid());
+			ps.setString(3, doctors.getUserInfos().getUid());
+			ps.setString(4, doctors.getTypeoftreatment().getTyid());
+			rs = ps.executeUpdate();
+			
+			if(rs > 0) {
+				System.out.println("doctor修改成功");
+			}else {
+				System.out.println("doctor修改失败");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+	}
+
+	@Override
+	public void deleteDoctors(String doid) {
+		Connection conn = DBHelper.getConn();
+		PreparedStatement ps = null;
+		int rs = 0;
+		
+		String sql = "delete from doctors where doid = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, doid);
+			rs = ps.executeUpdate();
+			
+			if(rs > 0) {
+				System.out.println("doctor删除成功");
+			}else {
+				System.out.println("doctor删除失败");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(conn, ps, null);
+		}
+		
+		
+	}
+
 }
