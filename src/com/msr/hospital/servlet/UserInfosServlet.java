@@ -179,7 +179,7 @@ public class UserInfosServlet extends BaseServlet {
 	 * @param resp
 	 * @return
 	 */
-	public String addUser(HttpServletRequest req , HttpServletResponse resp) {
+	public String addUserInfos(HttpServletRequest req , HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
 		
 		
@@ -195,7 +195,7 @@ public class UserInfosServlet extends BaseServlet {
 		addRecord("2", req, resp);
 		switch (site) {
 		case 0:
-			return "/html/User/users.jsp";
+			return "UserInfosServlet?method=findAllUser&site=0";
 		default:
 			return "index.jsp";
 		}

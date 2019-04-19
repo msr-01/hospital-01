@@ -39,8 +39,10 @@ import com.msr.hospital.util.UUIDUtils;
 
 public class Test {
 	public static void main(String[] args) {
-		PermissionDao psd = new PermissionDaoImpl();
+		RegisteredDao rd = new RegisteredDaoImpl();
 		
-		System.out.println(psd.findAllPermission().size());
+		rd.findAll();
+		
+		
 	}
 }

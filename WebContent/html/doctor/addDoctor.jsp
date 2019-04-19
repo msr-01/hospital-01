@@ -23,7 +23,7 @@
 				</table></td>
 		</tr>
 	</table>
-	<form name="form1" method="post" action="${pageContext.request.contextPath}/DoctorsSevlet?method=addDoctors&site=1">
+	<form name="form1" method="post" action="${pageContext.request.contextPath}/DoctorsSevlet?method=addDoctors&site=0">
 		<table width="95%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="90" height="24" class="td_form01">医生工号</td>

@@ -68,9 +68,19 @@ public class RegisteredDaoImpl implements RegisteredDao {
 			
 			while(rs.next()) {
 				String doid = rs.getString("doid");
+				System.out.println("doid:"+doid);
+				
 				Doctors doctors = dd.findByDoid(doid);
-				String piid = rs.getString("piid");	
+				
+				System.out.println("doctors:"+doctors);
+				String piid = rs.getString("piid");
+				
+				System.out.println("piid:"+piid);
+				
+				
 				Patientinformation patientinformation = pd.findByPiid(piid);
+				
+				System.out.println("patientinformation:"+patientinformation);
 				Registrationfee registrationfee = rd.findByDoid(doid);
 				Registered registered = new Registered(rs.getString("reid"), doctors.getTypeoftreatment(), patientinformation, doctors.getBranch(), registrationfee, rs.getString("retime"), doctors);
 				rlist.add(registered);
