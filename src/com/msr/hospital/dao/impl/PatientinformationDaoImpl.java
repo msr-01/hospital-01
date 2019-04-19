@@ -21,14 +21,15 @@ public class PatientinformationDaoImpl implements PatientinformationDao {
 		PreparedStatement ps = null;
 		int rs = 0;
 		
-		String sql = "insert into patientinformation  (piname,pisex,piage,piphonenumber) values(?,?,?,?)";
+		String sql = "insert into patientinformation  (piid,piname,pisex,piage,piphonenumber) values(?,?,?,?,?)";
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, patientinformation.getPiname());
-			ps.setString(2, patientinformation.getPisex());
-			ps.setInt(3, patientinformation.getPiage());
-			ps.setString(4, patientinformation.getPiphonenumber());
+			ps.setString(1,patientinformation.getPiid());
+			ps.setString(2, patientinformation.getPiname());
+			ps.setString(3, patientinformation.getPisex());
+			ps.setInt(4, patientinformation.getPiage());
+			ps.setString(5, patientinformation.getPiphonenumber());
 			rs = ps.executeUpdate();
 			if(rs>0) {
 				System.out.println("patientinformation插入成功");

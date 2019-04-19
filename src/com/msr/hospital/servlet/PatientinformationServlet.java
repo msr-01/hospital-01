@@ -148,7 +148,7 @@ public class PatientinformationServlet extends BaseServlet {
 	public String addPatientinformation(HttpServletRequest req, HttpServletResponse resp) {
 		int site = Integer.parseInt(req.getParameter("site"));
 		
-		Patientinformation patientinformation = new Patientinformation(null, req.getParameter("piname"), req.getParameter("pisex"), Integer.parseInt(req.getParameter("piage")), req.getParameter("piphonenumber"), null);
+		Patientinformation patientinformation = new Patientinformation(req.getParameter("piid"), req.getParameter("piname"), req.getParameter("pisex"), Integer.parseInt(req.getParameter("piage")), req.getParameter("piphonenumber"), null);
 		pd.addPatientinformation(patientinformation);
 		
 		//18代表增加患者信息
