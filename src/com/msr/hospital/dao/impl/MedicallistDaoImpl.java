@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tomcat.util.http.fileupload.ParameterParser;
-
 import com.msr.hospital.bean.Medicallist;
 import com.msr.hospital.bean.Medicalproject;
 import com.msr.hospital.bean.Prescription;

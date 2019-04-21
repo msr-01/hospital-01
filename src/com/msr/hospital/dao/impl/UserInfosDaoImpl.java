@@ -241,7 +241,7 @@ public class UserInfosDaoImpl implements UserInfosDao {
 				RoleName roleName = new RoleName(rid, rname);
 				
 				
-				Rolepermissions rolepermissions = new Rolepermissions(cid, rs.getString("popedom"));
+				Rolepermissions rolepermissions = new Rolepermissions(cid, "abcdefghijkl");
 				Characte characte = new Characte(cid, roleName, cdescription, rolepermissions);
 
 				UserInfos userInfos = new UserInfos(uid, characte, upassword, uname, ujobtitle, uage, usex, uphonenumber, ustatus, uemail, udescription, jobnumber, null);

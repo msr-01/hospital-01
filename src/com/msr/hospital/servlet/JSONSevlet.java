@@ -16,24 +16,24 @@ import com.msr.hospital.bean.Drug;
 import com.msr.hospital.bean.Medicalproject;
 import com.msr.hospital.bean.Patientinformation;
 import com.msr.hospital.bean.Registrationfee;
-import com.msr.hospital.bean.Typeoftreatment;
 import com.msr.hospital.dao.BranchDao;
 import com.msr.hospital.dao.DoctorsDao;
 import com.msr.hospital.dao.DrugDao;
 import com.msr.hospital.dao.MedicalprojectDao;
 import com.msr.hospital.dao.PatientinformationDao;
 import com.msr.hospital.dao.RegistrationfeeDao;
-import com.msr.hospital.dao.TypeoftreatmentDao;
 import com.msr.hospital.dao.impl.BranchDaoImpl;
 import com.msr.hospital.dao.impl.DoctorsDaoImpl;
 import com.msr.hospital.dao.impl.DrugDaoImpl;
 import com.msr.hospital.dao.impl.MedicalprojectDaoImpl;
 import com.msr.hospital.dao.impl.PatientinformationDaoImpl;
 import com.msr.hospital.dao.impl.RegistrationfeeDaoImpl;
-import com.msr.hospital.dao.impl.TypeoftreatmentDaoImple;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
+
+
 
 /**
  * Servlet implementation class JSONSevlet
